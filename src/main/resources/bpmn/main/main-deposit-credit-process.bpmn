@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0fr9mxs" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="MainDepositCreditProcess" name="MainDepositCreditProcess" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:startEvent id="StartEvent_1" name="MainDepositCreditStartEvent">
+      <bpmn:outgoing>Flow_17w6dhm</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_0x6ir2l">
+      <bpmn:incoming>Flow_1g36gop</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="GoingToBankId" name="Going to the bank" camunda:formKey="camunda-forms:/form/way-toget-to-the-bank.form">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_17w6dhm</bpmn:incoming>
+      <bpmn:outgoing>Flow_0gsnwfm</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_17w6dhm" sourceRef="StartEvent_1" targetRef="GoingToBankId" />
+    <bpmn:exclusiveGateway id="Gateway_0gtx0fy" name="Talk or Taxi?">
+      <bpmn:incoming>Flow_0gsnwfm</bpmn:incoming>
+      <bpmn:outgoing>Flow_12bz2p1</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0wpz8qj</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0gsnwfm" sourceRef="GoingToBankId" targetRef="Gateway_0gtx0fy" />
+    <bpmn:serviceTask id="PayForTheTaxiId" name="Pay for the taxi" camunda:delegateExpression="${taxiPaymentDelegate}">
+      <bpmn:incoming>Flow_12bz2p1</bpmn:incoming>
+      <bpmn:outgoing>Flow_0l0gals</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_12bz2p1" name="taxi" sourceRef="Gateway_0gtx0fy" targetRef="PayForTheTaxiId">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${transportMode=='taxi'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0l0gals" sourceRef="PayForTheTaxiId" targetRef="GetTicketInQueueMachineId" />
+    <bpmn:sequenceFlow id="Flow_0wpz8qj" name="walk" sourceRef="Gateway_0gtx0fy" targetRef="GetTicketInQueueMachineId">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${transportMode=='walk'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_0jiuen7" name="Deposit or Credit">
+      <bpmn:incoming>Flow_0jlqsgp</bpmn:incoming>
+      <bpmn:outgoing>Flow_005f1i5</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1230o2r</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0jlqsgp" sourceRef="GetTicketInQueueMachineId" targetRef="Gateway_0jiuen7" />
+    <bpmn:callActivity id="DepositOpeningProcessId" name="OpenDeposit" calledElement="DepositOpening">
+      <bpmn:extensionElements>
+        <camunda:in businessKey="#{execution.processBusinessKey}" />
+        <camunda:in variables="all" />
+        <camunda:out variables="all" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_005f1i5</bpmn:incoming>
+      <bpmn:outgoing>Flow_199au9z</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:sequenceFlow id="Flow_005f1i5" name="Ticket deposit" sourceRef="Gateway_0jiuen7" targetRef="DepositOpeningProcessId">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${ticket=='deposit'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:callActivity id="CreditObtainingProcess" name="Get a credit" calledElement="Process_CreditObtaining">
+      <bpmn:extensionElements>
+        <camunda:in businessKey="#{execution.processBusinessKey}" />
+        <camunda:in variables="all" />
+        <camunda:out variables="all" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1230o2r</bpmn:incoming>
+      <bpmn:outgoing>Flow_0sdquxf</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:sequenceFlow id="Flow_1230o2r" name="Ticket deposit" sourceRef="Gateway_0jiuen7" targetRef="CreditObtainingProcess">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${ticket=='credit'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_0m0xhxz">
+      <bpmn:incoming>Flow_199au9z</bpmn:incoming>
+      <bpmn:incoming>Flow_0sdquxf</bpmn:incoming>
+      <bpmn:outgoing>Flow_09fuexa</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_199au9z" sourceRef="DepositOpeningProcessId" targetRef="Gateway_0m0xhxz" />
+    <bpmn:sequenceFlow id="Flow_0sdquxf" sourceRef="CreditObtainingProcess" targetRef="Gateway_0m0xhxz" />
+    <bpmn:callActivity id="ActivityRoadToHomeId" name="Road to home" calledElement="GoingHomeProcess">
+      <bpmn:extensionElements>
+        <camunda:in businessKey="#{execution.processBusinessKey}" />
+        <camunda:in variables="all" />
+        <camunda:out variables="all" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_09fuexa</bpmn:incoming>
+      <bpmn:outgoing>Flow_1g36gop</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:sequenceFlow id="Flow_09fuexa" sourceRef="Gateway_0m0xhxz" targetRef="ActivityRoadToHomeId" />
+    <bpmn:sequenceFlow id="Flow_1g36gop" sourceRef="ActivityRoadToHomeId" targetRef="EndEvent_0x6ir2l" />
+    <bpmn:userTask id="GetTicketInQueueMachineId" name="GetTicketInQueueMachine" camunda:formKey="camunda-forms:/form/queue-machine.form">
+      <bpmn:incoming>Flow_0l0gals</bpmn:incoming>
+      <bpmn:incoming>Flow_0wpz8qj</bpmn:incoming>
+      <bpmn:outgoing>Flow_0jlqsgp</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:textAnnotation id="TextAnnotation_0lbbssc">
+      <bpmn:text>Camunda forms - Choose transport to the bank (walk or taxi?)</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1frh8qk" associationDirection="None" sourceRef="GoingToBankId" targetRef="TextAnnotation_0lbbssc" />
+    <bpmn:textAnnotation id="TextAnnotation_0xamo6m">
+      <bpmn:text>If taxi then reduce money from wallet</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1oj7qfq" associationDirection="None" sourceRef="PayForTheTaxiId" targetRef="TextAnnotation_0xamo6m" />
+    <bpmn:textAnnotation id="TextAnnotation_10fy09f">
+      <bpmn:text>Choose ticket in queue machine deposit or credit</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1bxvshh" associationDirection="None" sourceRef="GetTicketInQueueMachineId" targetRef="TextAnnotation_10fy09f" />
+    <bpmn:textAnnotation id="TextAnnotation_0wmzhj0">
+      <bpmn:text>Process of deposit opening</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1867qhj" associationDirection="None" sourceRef="DepositOpeningProcessId" targetRef="TextAnnotation_0wmzhj0" />
+    <bpmn:textAnnotation id="TextAnnotation_0wpsj1u">
+      <bpmn:text>Process of credit obtaining</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0dqre99" associationDirection="None" sourceRef="CreditObtainingProcess" targetRef="TextAnnotation_0wpsj1u" />
+    <bpmn:textAnnotation id="TextAnnotation_0rd0k46">
+      <bpmn:text>Choose transport to going home after bank visited</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0t7ylhz" associationDirection="None" sourceRef="ActivityRoadToHomeId" targetRef="TextAnnotation_0rd0k46" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="MainDepositCreditProcess">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="-78" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-102" y="142" width="88" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1lgmun4_di" bpmnElement="GoingToBankId">
+        <dc:Bounds x="40" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0gtx0fy_di" bpmnElement="Gateway_0gtx0fy" isMarkerVisible="true">
+        <dc:Bounds x="225" y="92" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="221" y="149" width="61" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0e4dhlf_di" bpmnElement="PayForTheTaxiId">
+        <dc:Bounds x="360" y="-70" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0jiuen7_di" bpmnElement="Gateway_0jiuen7" isMarkerVisible="true">
+        <dc:Bounds x="705" y="92" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="764.5" y="110" width="83" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0m0xhxz_di" bpmnElement="Gateway_0m0xhxz" isMarkerVisible="true">
+        <dc:Bounds x="1095" y="92" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1yrj8fa_di" bpmnElement="ActivityRoadToHomeId">
+        <dc:Bounds x="1240" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0x6ir2l_di" bpmnElement="EndEvent_0x6ir2l">
+        <dc:Bounds x="1432" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_016xu7h_di" bpmnElement="GetTicketInQueueMachineId">
+        <dc:Bounds x="530" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1hk7qsw_di" bpmnElement="DepositOpeningProcessId">
+        <dc:Bounds x="880" y="-55" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_04x16bm_di" bpmnElement="CreditObtainingProcess">
+        <dc:Bounds x="880" y="210" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1frh8qk_di" bpmnElement="Association_1frh8qk">
+        <di:waypoint x="66" y="77" />
+        <di:waypoint x="33" y="20" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1oj7qfq_di" bpmnElement="Association_1oj7qfq">
+        <di:waypoint x="384" y="-70" />
+        <di:waypoint x="356" y="-115" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1bxvshh_di" bpmnElement="Association_1bxvshh">
+        <di:waypoint x="534" y="155" />
+        <di:waypoint x="478" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0t7ylhz_di" bpmnElement="Association_0t7ylhz">
+        <di:waypoint x="1324" y="157" />
+        <di:waypoint x="1377" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0dqre99_di" bpmnElement="Association_0dqre99">
+        <di:waypoint x="971" y="290" />
+        <di:waypoint x="1024" y="340" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1867qhj_di" bpmnElement="Association_1867qhj">
+        <di:waypoint x="941" y="-55" />
+        <di:waypoint x="953" y="-99" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_0lbbssc_di" bpmnElement="TextAnnotation_0lbbssc">
+        <dc:Bounds x="-50" y="-50" width="100" height="70" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_17w6dhm_di" bpmnElement="Flow_17w6dhm">
+        <di:waypoint x="-42" y="117" />
+        <di:waypoint x="40" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gsnwfm_di" bpmnElement="Flow_0gsnwfm">
+        <di:waypoint x="140" y="117" />
+        <di:waypoint x="225" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12bz2p1_di" bpmnElement="Flow_12bz2p1">
+        <di:waypoint x="250" y="92" />
+        <di:waypoint x="250" y="-30" />
+        <di:waypoint x="360" y="-30" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="257" y="28" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_0xamo6m_di" bpmnElement="TextAnnotation_0xamo6m">
+        <dc:Bounds x="280" y="-170" width="100" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0l0gals_di" bpmnElement="Flow_0l0gals">
+        <di:waypoint x="460" y="-30" />
+        <di:waypoint x="580" y="-30" />
+        <di:waypoint x="580" y="77" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wpz8qj_di" bpmnElement="Flow_0wpz8qj">
+        <di:waypoint x="275" y="117" />
+        <di:waypoint x="530" y="117" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="392" y="99" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_10fy09f_di" bpmnElement="TextAnnotation_10fy09f">
+        <dc:Bounds x="410" y="200" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0jlqsgp_di" bpmnElement="Flow_0jlqsgp">
+        <di:waypoint x="630" y="117" />
+        <di:waypoint x="705" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_005f1i5_di" bpmnElement="Flow_005f1i5">
+        <di:waypoint x="730" y="92" />
+        <di:waypoint x="730" y="-15" />
+        <di:waypoint x="880" y="-15" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="736" y="36" width="68" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1230o2r_di" bpmnElement="Flow_1230o2r">
+        <di:waypoint x="730" y="142" />
+        <di:waypoint x="730" y="250" />
+        <di:waypoint x="880" y="250" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="736" y="193" width="68" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_199au9z_di" bpmnElement="Flow_199au9z">
+        <di:waypoint x="980" y="-15" />
+        <di:waypoint x="1120" y="-15" />
+        <di:waypoint x="1120" y="92" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0sdquxf_di" bpmnElement="Flow_0sdquxf">
+        <di:waypoint x="980" y="250" />
+        <di:waypoint x="1120" y="250" />
+        <di:waypoint x="1120" y="142" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09fuexa_di" bpmnElement="Flow_09fuexa">
+        <di:waypoint x="1145" y="117" />
+        <di:waypoint x="1240" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_0rd0k46_di" bpmnElement="TextAnnotation_0rd0k46">
+        <dc:Bounds x="1340" y="220" width="100" height="84" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1g36gop_di" bpmnElement="Flow_1g36gop">
+        <di:waypoint x="1340" y="117" />
+        <di:waypoint x="1432" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_0wpsj1u_di" bpmnElement="TextAnnotation_0wpsj1u">
+        <dc:Bounds x="990" y="340" width="100" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0wmzhj0_di" bpmnElement="TextAnnotation_0wmzhj0">
+        <dc:Bounds x="910" y="-140" width="100" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
