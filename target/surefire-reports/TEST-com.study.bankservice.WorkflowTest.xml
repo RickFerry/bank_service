@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.study.bankservice.WorkflowTest" time="4.811" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.study.bankservice.WorkflowTest" time="6.218" tests="1" errors="1" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -14,7 +14,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/home/ricardo/.sdkman/candidates/java/17.0.14-zulu/lib"/>
-    <property name="sun.java.command" value="/home/ricardo/Documents/projects/bank_service/target/surefire/surefirebooter-20251108123442496_3.jar /home/ricardo/Documents/projects/bank_service/target/surefire 2025-11-08T12-34-41_635-jvmRun1 surefire-20251108123442496_1tmp surefire_0-20251108123442496_2tmp"/>
+    <property name="sun.java.command" value="/home/ricardo/Documents/projects/bank_service/target/surefire/surefirebooter-20251119161108785_3.jar /home/ricardo/Documents/projects/bank_service/target/surefire 2025-11-19T16-11-08_728-jvmRun1 surefire-20251119161108785_1tmp surefire_0-20251119161108785_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/ricardo/Documents/projects/bank_service/target/test-classes:/home/ricardo/Documents/projects/bank_service/target/classes:/home/ricardo/.m2/repository/org/camunda/bpm/springboot/camunda-bpm-spring-boot-starter-rest/7.22.0/camunda-bpm-spring-boot-starter-rest-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/bpm/springboot/camunda-bpm-spring-boot-starter/7.22.0/camunda-bpm-spring-boot-starter-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/bpm/camunda-engine-spring-6/7.22.0/camunda-engine-spring-6-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/bpm/camunda-engine/7.22.0/camunda-engine-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/bpm/model/camunda-bpmn-model/7.22.0/camunda-bpmn-model-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/bpm/model/camunda-xml-model/7.22.0/camunda-xml-model-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/bpm/model/camunda-cmmn-model/7.22.0/camunda-cmmn-model-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/bpm/juel/camunda-juel/7.22.0/camunda-juel-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/bpm/dmn/camunda-engine-dmn/7.22.0/camunda-engine-dmn-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/bpm/model/camunda-dmn-model/7.22.0/camunda-dmn-model-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/bpm/dmn/camunda-engine-feel-api/7.22.0/camunda-engine-feel-api-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/bpm/dmn/camunda-engine-feel-juel/7.22.0/camunda-engine-feel-juel-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/bpm/dmn/camunda-engine-feel-scala/7.22.0/camunda-engine-feel-scala-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/feel/feel-engine/1.17.5/feel-engine-1.17.5-scala-shaded.jar:/home/ricardo/.m2/repository/org/camunda/commons/camunda-commons-typed-values/7.22.0/camunda-commons-typed-values-7.22.0.jar:/home/ricardo/.m2/repository/org/mybatis/mybatis/3.5.15/mybatis-3.5.15.jar:/home/ricardo/.m2/repository/joda-time/joda-time/2.12.5/joda-time-2.12.5.jar:/home/ricardo/.m2/repository/org/springframework/spring-context/6.1.12/spring-context-6.1.12.jar:/home/ricardo/.m2/repository/org/springframework/spring-tx/6.1.12/spring-tx-6.1.12.jar:/home/ricardo/.m2/repository/org/springframework/spring-orm/6.1.12/spring-orm-6.1.12.jar:/home/ricardo/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.3.3/spring-boot-autoconfigure-3.3.3.jar:/home/ricardo/.m2/repository/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar:/home/ricardo/.m2/repository/com/fasterxml/uuid/java-uuid-generator/4.3.0/java-uuid-generator-4.3.0.jar:/home/ricardo/.m2/repository/com/sun/xml/bind/jaxb-impl/4.0.5/jaxb-impl-4.0.5.jar:/home/ricardo/.m2/repository/com/sun/xml/bind/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/home/ricardo/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/home/ricardo/.m2/repository/org/camunda/bpm/camunda-engine-rest-core-jakarta/7.22.0/camunda-engine-rest-core-jakarta-7.22.0.jar:/home/ricardo/.m2/repository/commons-fileupload/commons-fileupload/1.5/commons-fileupload-1.5.jar:/home/ricardo/.m2/repository/commons-io/commons-io/2.8.0/commons-io-2.8.0.jar:/home/ricardo/.m2/repository/com/fasterxml/jackson/jakarta/rs/jackson-jakarta-rs-json-provider/2.17.2/jackson-jakarta-rs-json-provider-2.17.2.jar:/home/ricardo/.m2/repository/com/fasterxml/jackson/jakarta/rs/jackson-jakarta-rs-base/2.17.2/jackson-jakarta-rs-base-2.17.2.jar:/home/ricardo/.m2/repository/com/fasterxml/jackson/module/jackson-module-jakarta-xmlbind-annotations/2.17.2/jackson-module-jakarta-xmlbind-annotations-2.17.2.jar:/home/ricardo/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.17.2/jackson-datatype-jsr310-2.17.2.jar:/home/ricardo/.m2/repository/org/springframework/boot/spring-boot-starter-jersey/3.3.3/spring-boot-starter-jersey-3.3.3.jar:/home/ricardo/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.3.3/spring-boot-starter-validation-3.3.3.jar:/home/ricardo/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.1.Final/hibernate-validator-8.0.1.Final.jar:/home/ricardo/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/home/ricardo/.m2/repository/org/glassfish/jersey/containers/jersey-container-servlet-core/3.1.8/jersey-container-servlet-core-3.1.8.jar:/home/ricardo/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/ricardo/.m2/repository/org/glassfish/jersey/core/jersey-common/3.1.8/jersey-common-3.1.8.jar:/home/ricardo/.m2/repository/org/glassfish/hk2/osgi-resource-locator/1.0.3/osgi-resource-locator-1.0.3.jar:/home/ricardo/.m2/repository/jakarta/ws/rs/jakarta.ws.rs-api/3.1.0/jakarta.ws.rs-api-3.1.0.jar:/home/ricardo/.m2/repository/org/glassfish/jersey/containers/jersey-container-servlet/3.1.8/jersey-container-servlet-3.1.8.jar:/home/ricardo/.m2/repository/org/glassfish/jersey/core/jersey-server/3.1.8/jersey-server-3.1.8.jar:/home/ricardo/.m2/repository/org/glassfish/jersey/core/jersey-client/3.1.8/jersey-client-3.1.8.jar:/home/ricardo/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/home/ricardo/.m2/repository/org/glassfish/jersey/ext/jersey-bean-validation/3.1.8/jersey-bean-validation-3.1.8.jar:/home/ricardo/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/home/ricardo/.m2/repository/org/glassfish/expressly/expressly/5.0.0/expressly-5.0.0.jar:/home/ricardo/.m2/repository/org/glassfish/jersey/ext/jersey-spring6/3.1.8/jersey-spring6-3.1.8.jar:/home/ricardo/.m2/repository/org/glassfish/jersey/inject/jersey-hk2/3.1.8/jersey-hk2-3.1.8.jar:/home/ricardo/.m2/repository/org/glassfish/hk2/hk2-locator/3.0.6/hk2-locator-3.0.6.jar:/home/ricardo/.m2/repository/org/glassfish/hk2/external/aopalliance-repackaged/3.0.6/aopalliance-repackaged-3.0.6.jar:/home/ricardo/.m2/repository/org/javassist/javassist/3.30.2-GA/javassist-3.30.2-GA.jar:/home/ricardo/.m2/repository/org/glassfish/hk2/hk2/3.0.6/hk2-3.0.6.jar:/home/ricardo/.m2/repository/org/glassfish/hk2/hk2-utils/3.0.6/hk2-utils-3.0.6.jar:/home/ricardo/.m2/repository/org/glassfish/hk2/hk2-api/3.0.6/hk2-api-3.0.6.jar:/home/ricardo/.m2/repository/org/glassfish/hk2/hk2-core/3.0.6/hk2-core-3.0.6.jar:/home/ricardo/.m2/repository/org/glassfish/hk2/hk2-runlevel/3.0.6/hk2-runlevel-3.0.6.jar:/home/ricardo/.m2/repository/org/glassfish/hk2/class-model/3.0.6/class-model-3.0.6.jar:/home/ricardo/.m2/repository/org/glassfish/hk2/spring-bridge/3.0.6/spring-bridge-3.0.6.jar:/home/ricardo/.m2/repository/org/glassfish/jersey/media/jersey-media-json-jackson/3.1.8/jersey-media-json-jackson-3.1.8.jar:/home/ricardo/.m2/repository/org/glassfish/jersey/ext/jersey-entity-filtering/3.1.8/jersey-entity-filtering-3.1.8.jar:/home/ricardo/.m2/repository/org/camunda/bpm/springboot/camunda-bpm-spring-boot-starter-webapp/7.22.0/camunda-bpm-spring-boot-starter-webapp-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/bpm/springboot/camunda-bpm-spring-boot-starter-webapp-core/7.22.0/camunda-bpm-spring-boot-starter-webapp-core-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/bpm/webapp/camunda-webapp-jakarta/7.22.0/camunda-webapp-jakarta-7.22.0-classes.jar:/home/ricardo/.m2/repository/org/camunda/bpm/webapp/camunda-webapp-webjar/7.22.0/camunda-webapp-webjar-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/bpm/camunda-engine-plugin-spin/7.22.0/camunda-engine-plugin-spin-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/spin/camunda-spin-core/7.22.0/camunda-spin-core-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/commons/camunda-commons-logging/7.22.0/camunda-commons-logging-7.22.0.jar:/home/ricardo/.m2/repository/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar:/home/ricardo/.m2/repository/org/camunda/commons/camunda-commons-utils/7.22.0/camunda-commons-utils-7.22.0.jar:/home/ricardo/.m2/repository/org/camunda/spin/camunda-spin-dataformat-json-jackson/7.22.0/camunda-spin-dataformat-json-jackson-7.22.0.jar:/home/ricardo/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.2/jackson-core-2.17.2.jar:/home/ricardo/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.2/jackson-databind-2.17.2.jar:/home/ricardo/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.2/jackson-annotations-2.17.2.jar:/home/ricardo/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/home/ricardo/.m2/repository/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar:/home/ricardo/.m2/repository/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar:/home/ricardo/.m2/repository/org/openjdk/nashorn/nashorn-core/15.4/nashorn-core-15.4.jar:/home/ricardo/.m2/repository/org/ow2/asm/asm/7.3.1/asm-7.3.1.jar:/home/ricardo/.m2/repository/org/ow2/asm/asm-commons/7.3.1/asm-commons-7.3.1.jar:/home/ricardo/.m2/repository/org/ow2/asm/asm-analysis/7.3.1/asm-analysis-7.3.1.jar:/home/ricardo/.m2/repository/org/ow2/asm/asm-tree/7.3.1/asm-tree-7.3.1.jar:/home/ricardo/.m2/repository/org/ow2/asm/asm-util/7.3.1/asm-util-7.3.1.jar:/home/ricardo/.m2/repository/org/assertj/assertj-core/3.25.3/assertj-core-3.25.3.jar:/home/ricardo/.m2/repository/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.jar:/home/ricardo/.m2/repository/org/camunda/bpm/extension/camunda-bpm-junit5/1.0.2/camunda-bpm-junit5-1.0.2.jar:/home/ricardo/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar:/home/ricardo/.m2/repository/org/camunda/bpm/springboot/camunda-bpm-spring-boot-starter-test/7.22.0/camunda-bpm-spring-boot-starter-test-7.22.0.jar:/home/ricardo/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.3.3/spring-boot-starter-test-3.3.3.jar:/home/ricardo/.m2/repository/org/springframework/boot/spring-boot-test/3.3.3/spring-boot-test-3.3.3.jar:/home/ricardo/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.3.3/spring-boot-test-autoconfigure-3.3.3.jar:/home/ricardo/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/home/ricardo/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/home/ricardo/.m2/repository/org/awaitility/awaitility/4.2.2/awaitility-4.2.2.jar:/home/ricardo/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/home/ricardo/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.3/junit-jupiter-5.10.3.jar:/home/ricardo/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.3/junit-jupiter-api-5.10.3.jar:/home/ricardo/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.3/junit-jupiter-params-5.10.3.jar:/home/ricardo/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.3/junit-jupiter-engine-5.10.3.jar:/home/ricardo/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar:/home/ricardo/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar:/home/ricardo/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/ricardo/.m2/repository/org/mockito/mockito-junit-jupiter/5.11.0/mockito-junit-jupiter-5.11.0.jar:/home/ricardo/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/home/ricardo/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/ricardo/.m2/repository/org/springframework/spring-core/6.1.12/spring-core-6.1.12.jar:/home/ricardo/.m2/repository/org/springframework/spring-jcl/6.1.12/spring-jcl-6.1.12.jar:/home/ricardo/.m2/repository/org/springframework/spring-test/6.1.12/spring-test-6.1.12.jar:/home/ricardo/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:/home/ricardo/.m2/repository/org/junit/vintage/junit-vintage-engine/5.10.3/junit-vintage-engine-5.10.3.jar:/home/ricardo/.m2/repository/org/junit/platform/junit-platform-engine/1.10.3/junit-platform-engine-1.10.3.jar:/home/ricardo/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/ricardo/.m2/repository/org/junit/platform/junit-platform-commons/1.10.3/junit-platform-commons-1.10.3.jar:/home/ricardo/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/ricardo/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/ricardo/.m2/repository/org/camunda/bpm/camunda-bpm-assert/7.22.0/camunda-bpm-assert-7.22.0.jar:/home/ricardo/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.3.3/spring-boot-starter-web-3.3.3.jar:/home/ricardo/.m2/repository/org/springframework/boot/spring-boot-starter/3.3.3/spring-boot-starter-3.3.3.jar:/home/ricardo/.m2/repository/org/springframework/boot/spring-boot/3.3.3/spring-boot-3.3.3.jar:/home/ricardo/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.3.3/spring-boot-starter-logging-3.3.3.jar:/home/ricardo/.m2/repository/ch/qos/logback/logback-classic/1.5.7/logback-classic-1.5.7.jar:/home/ricardo/.m2/repository/ch/qos/logback/logback-core/1.5.7/logback-core-1.5.7.jar:/home/ricardo/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.23.1/log4j-to-slf4j-2.23.1.jar:/home/ricardo/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar:/home/ricardo/.m2/repository/org/slf4j/jul-to-slf4j/2.0.16/jul-to-slf4j-2.0.16.jar:/home/ricardo/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/home/ricardo/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/home/ricardo/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.3.3/spring-boot-starter-json-3.3.3.jar:/home/ricardo/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.17.2/jackson-datatype-jdk8-2.17.2.jar:/home/ricardo/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.17.2/jackson-module-parameter-names-2.17.2.jar:/home/ricardo/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.3.3/spring-boot-starter-tomcat-3.3.3.jar:/home/ricardo/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.28/tomcat-embed-core-10.1.28.jar:/home/ricardo/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.28/tomcat-embed-el-10.1.28.jar:/home/ricardo/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.28/tomcat-embed-websocket-10.1.28.jar:/home/ricardo/.m2/repository/org/springframework/spring-web/6.1.12/spring-web-6.1.12.jar:/home/ricardo/.m2/repository/org/springframework/spring-beans/6.1.12/spring-beans-6.1.12.jar:/home/ricardo/.m2/repository/io/micrometer/micrometer-observation/1.13.3/micrometer-observation-1.13.3.jar:/home/ricardo/.m2/repository/io/micrometer/micrometer-commons/1.13.3/micrometer-commons-1.13.3.jar:/home/ricardo/.m2/repository/org/springframework/spring-webmvc/6.1.12/spring-webmvc-6.1.12.jar:/home/ricardo/.m2/repository/org/springframework/spring-aop/6.1.12/spring-aop-6.1.12.jar:/home/ricardo/.m2/repository/org/springframework/spring-expression/6.1.12/spring-expression-6.1.12.jar:/home/ricardo/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:/home/ricardo/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.3.3/spring-boot-starter-jdbc-3.3.3.jar:/home/ricardo/.m2/repository/com/zaxxer/HikariCP/5.1.0/HikariCP-5.1.0.jar:/home/ricardo/.m2/repository/org/springframework/spring-jdbc/6.1.12/spring-jdbc-6.1.12.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -32,7 +32,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="FILE_LOG_CHARSET" value="UTF-8"/>
     <property name="java.awt.headless" value="true"/>
-    <property name="surefire.real.class.path" value="/home/ricardo/Documents/projects/bank_service/target/surefire/surefirebooter-20251108123442496_3.jar"/>
+    <property name="surefire.real.class.path" value="/home/ricardo/Documents/projects/bank_service/target/surefire/surefirebooter-20251119161108785_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.14+7-LTS"/>
     <property name="user.name" value="ricardo"/>
@@ -53,7 +53,7 @@
     <property name="os.arch" value="amd64"/>
     <property name="jansi.passthrough" value="true"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="11016"/>
+    <property name="PID" value="15856"/>
     <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
     <property name="native.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
@@ -64,15 +64,108 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="maven.repo.local" value="/home/ricardo/.m2/repository"/>
     <property name="java.class.version" value="61.0"/>
+    <property name="LOGGED_APPLICATION_NAME" value="[backend-service] "/>
   </properties>
-  <testcase name="shouldExecuteHappyPath" classname="com.study.bankservice.WorkflowTest" time="0.576">
-    <system-out><![CDATA[12:34:43.036 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.study.bankservice.WorkflowTest]: WorkflowTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-12:34:43.115 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.study.bankservice.Application for test class com.study.bankservice.WorkflowTest
-12:34:43.199 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.study.bankservice.WorkflowTest]: WorkflowTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-12:34:43.201 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.study.bankservice.Application for test class com.study.bankservice.WorkflowTest
-12:34:43.370 [main] INFO  org.camunda.bpm.dmn.feel.scala - FEEL/SCALA-01001 Spin value mapper detected
-12:34:43.420 [main] INFO  org.camunda.feel.FeelEngine - Engine created. [value-mapper: CompositeValueMapper(List(org.camunda.feel.impl.JavaValueMapper@319854f0, org.camunda.spin.plugin.impl.feel.integration.SpinValueMapper@748fe51d)), function-provider: org.camunda.bpm.dmn.feel.impl.scala.function.CustomFunctionTransformer@35d3ab60, clock: SystemClock, configuration: {externalFunctionsEnabled: false}]
-12:34:44.707 [main] ERROR org.camunda.bpm.engine.persistence - ENGINE-03015 Problem during schema operation 'drop' with statement '-- 
+  <testcase name="shouldExecuteHappyPath" classname="com.study.bankservice.WorkflowTest" time="0.006">
+    <error message="Failed to load ApplicationContext for [WebMergedContextConfiguration@1d40f597 testClass = com.study.bankservice.WorkflowTest, locations = [], classes = [com.study.bankservice.Application], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [], propertySourceProperties = [&quot;org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true&quot;], contextCustomizers = [org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@3406472c, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@40317ba2, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@13d4992d, org.springframework.boot.test.web.reactor.netty.DisableReactorResourceFactoryGlobalResourcesContextCustomizerFactory$DisableReactorResourceFactoryGlobalResourcesContextCustomizerCustomizer@3e74829, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@6f19ac19, org.springframework.boot.test.context.SpringBootTestAnnotation@f5296efa], resourceBasePath = &quot;src/main/webapp&quot;, contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]" type="java.lang.IllegalStateException"><![CDATA[java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@1d40f597 testClass = com.study.bankservice.WorkflowTest, locations = [], classes = [com.study.bankservice.Application], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [], propertySourceProperties = ["org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true"], contextCustomizers = [org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@3406472c, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@40317ba2, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@13d4992d, org.springframework.boot.test.web.reactor.netty.DisableReactorResourceFactoryGlobalResourcesContextCustomizerFactory$DisableReactorResourceFactoryGlobalResourcesContextCustomizerCustomizer@3e74829, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@6f19ac19, org.springframework.boot.test.context.SpringBootTestAnnotation@f5296efa], resourceBasePath = "src/main/webapp", contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:180)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:191)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:130)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:260)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'camundaIntegrationDeterminator': Unsatisfied dependency expressed through field 'processEngine': Error creating bean with name 'processEngineFactoryBean': FactoryBean threw exception on object creation
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1439)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$3(SpringBootContextLoader.java:137)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46)
+	at org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1463)
+	at org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:553)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:137)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:108)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:225)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:152)
+	... 12 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'processEngineFactoryBean': FactoryBean threw exception on object creation
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:188)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.getObjectFromFactoryBean(FactoryBeanRegistrySupport.java:124)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getObjectForBeanInstance(AbstractBeanFactory.java:1867)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.getObjectForBeanInstance(AbstractAutowireCapableBeanFactory.java:1296)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:259)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1696)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1397)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785)
+	... 37 more
+Caused by: org.camunda.bpm.engine.ProcessEngineException: ENGINE-12012 Exception on accessing the database connection: Wrong user name or password [28000-224]
+	at org.camunda.bpm.engine.impl.cfg.ConfigurationLogger.databaseConnectionAccessException(ConfigurationLogger.java:95)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.initDatabaseType(ProcessEngineConfigurationImpl.java:1775)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.initDataSource(ProcessEngineConfigurationImpl.java:1696)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.init(ProcessEngineConfigurationImpl.java:1149)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.buildProcessEngine(ProcessEngineConfigurationImpl.java:1120)
+	at org.camunda.bpm.engine.spring.SpringTransactionsProcessEngineConfiguration.buildProcessEngine(SpringTransactionsProcessEngineConfiguration.java:65)
+	at org.camunda.bpm.engine.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:55)
+	at org.camunda.bpm.engine.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:34)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:182)
+	... 48 more
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.engine.Engine.validateUserAndPassword(Engine.java:396)
+	at org.h2.engine.Engine.createSession(Engine.java:206)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118)
+	at org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy$TransactionAwareInvocationHandler.invoke(TransactionAwareDataSourceProxy.java:247)
+	at jdk.proxy2/jdk.proxy2.$Proxy75.getMetaData(Unknown Source)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.initDatabaseType(ProcessEngineConfigurationImpl.java:1759)
+	... 55 more
+]]></error>
+    <system-out><![CDATA[16:11:09.376 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.study.bankservice.WorkflowTest]: WorkflowTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:11:09.451 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.study.bankservice.Application for test class com.study.bankservice.WorkflowTest
+16:11:09.543 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.study.bankservice.WorkflowTest]: WorkflowTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:11:09.545 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.study.bankservice.Application for test class com.study.bankservice.WorkflowTest
+16:11:09.725 [main] INFO  org.camunda.bpm.dmn.feel.scala - FEEL/SCALA-01001 Spin value mapper detected
+16:11:09.779 [main] INFO  org.camunda.feel.FeelEngine - Engine created. [value-mapper: CompositeValueMapper(List(org.camunda.feel.impl.JavaValueMapper@319854f0, org.camunda.spin.plugin.impl.feel.integration.SpinValueMapper@748fe51d)), function-provider: org.camunda.bpm.dmn.feel.impl.scala.function.CustomFunctionTransformer@35d3ab60, clock: SystemClock, configuration: {externalFunctionsEnabled: false}]
+16:11:11.172 [main] ERROR org.camunda.bpm.engine.persistence - ENGINE-03015 Problem during schema operation 'drop' with statement '-- 
 -- 
 -- 
 -- 
@@ -84,23 +177,23 @@ drop constraint ACT_FK_DEC_REQ'. Cause: 'Table "ACT_RE_DECISION_DEF" not found; 
 -- 
 alter table ACT_RE_DECISION_DEF 
 drop constrain [42102-224]'
-12:34:44.707 [main] ERROR org.camunda.bpm.engine.persistence - ENGINE-03015 Problem during schema operation 'drop' with statement 'drop index ACT_IDX_DEC_DEF_TENANT_ID'. Cause: 'Index "ACT_IDX_DEC_DEF_TENANT_ID" not found; SQL statement:
+16:11:11.173 [main] ERROR org.camunda.bpm.engine.persistence - ENGINE-03015 Problem during schema operation 'drop' with statement 'drop index ACT_IDX_DEC_DEF_TENANT_ID'. Cause: 'Index "ACT_IDX_DEC_DEF_TENANT_ID" not found; SQL statement:
 drop index ACT_IDX_DEC_DEF_TENANT_ID [42112-224]'
-12:34:44.708 [main] ERROR org.camunda.bpm.engine.persistence - ENGINE-03015 Problem during schema operation 'drop' with statement 'drop index ACT_IDX_DEC_DEF_REQ_ID'. Cause: 'Index "ACT_IDX_DEC_DEF_REQ_ID" not found; SQL statement:
+16:11:11.173 [main] ERROR org.camunda.bpm.engine.persistence - ENGINE-03015 Problem during schema operation 'drop' with statement 'drop index ACT_IDX_DEC_DEF_REQ_ID'. Cause: 'Index "ACT_IDX_DEC_DEF_REQ_ID" not found; SQL statement:
 drop index ACT_IDX_DEC_DEF_REQ_ID [42112-224]'
-12:34:44.708 [main] ERROR org.camunda.bpm.engine.persistence - ENGINE-03015 Problem during schema operation 'drop' with statement 'drop index ACT_IDX_DEC_REQ_DEF_TENANT_ID'. Cause: 'Index "ACT_IDX_DEC_REQ_DEF_TENANT_ID" not found; SQL statement:
+16:11:11.173 [main] ERROR org.camunda.bpm.engine.persistence - ENGINE-03015 Problem during schema operation 'drop' with statement 'drop index ACT_IDX_DEC_REQ_DEF_TENANT_ID'. Cause: 'Index "ACT_IDX_DEC_REQ_DEF_TENANT_ID" not found; SQL statement:
 drop index ACT_IDX_DEC_REQ_DEF_TENANT_ID [42112-224]'
-12:34:44.709 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'drop' on component 'decision.engine' with resource 'org/camunda/bpm/engine/db/drop/activiti.h2.drop.decision.engine.sql'
-12:34:44.780 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'engine' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.engine.sql'
-12:34:44.805 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'history' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.history.sql'
-12:34:44.811 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'identity' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.identity.sql'
-12:34:44.818 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'case.engine' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.case.engine.sql'
-12:34:44.821 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'case.history' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.case.history.sql'
-12:34:44.823 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'decision.engine' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.decision.engine.sql'
-12:34:44.828 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'decision.history' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.decision.history.sql'
-12:34:44.844 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03067 No history level property found in database
-12:34:44.847 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03065 Creating historyLevel property in database for level: HistoryLevelFull(name=full, id=3)
-12:34:44.858 [main] INFO  org.camunda.bpm.engine - ENGINE-00001 Process Engine default created.
+16:11:11.174 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'drop' on component 'decision.engine' with resource 'org/camunda/bpm/engine/db/drop/activiti.h2.drop.decision.engine.sql'
+16:11:11.254 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'engine' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.engine.sql'
+16:11:11.279 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'history' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.history.sql'
+16:11:11.286 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'identity' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.identity.sql'
+16:11:11.293 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'case.engine' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.case.engine.sql'
+16:11:11.296 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'case.history' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.case.history.sql'
+16:11:11.299 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'decision.engine' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.decision.engine.sql'
+16:11:11.303 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'decision.history' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.decision.history.sql'
+16:11:11.321 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03067 No history level property found in database
+16:11:11.324 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03065 Creating historyLevel property in database for level: HistoryLevelFull(name=full, id=3)
+16:11:11.337 [main] INFO  org.camunda.bpm.engine - ENGINE-00001 Process Engine default created.
 
  ____                                 _         ____  _       _    __                      
 / ___| __ _ _ __ ___  _   _ _ __   __| | __ _  |  _ \| | __ _| |_ / _| ___  _ __ _ __ ___  
@@ -112,135 +205,613 @@ drop index ACT_IDX_DEC_REQ_DEF_TENANT_ID [42112-224]'
   Camunda Platform: (v7.22.0)
   Camunda Platform Spring Boot Starter: (v7.22.0)
 
-12:34:45.026 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
-12:34:45.026 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
-12:34:45.030 [background-preinit] DEBUG o.h.v.i.x.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
-12:34:45.031 [background-preinit] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
-12:34:45.031 [background-preinit] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
-12:34:45.032 [background-preinit] DEBUG o.h.v.i.x.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
-12:34:45.034 [background-preinit] DEBUG o.h.v.i.e.r.TraversableResolvers - Cannot find jakarta.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
-12:34:45.046 [background-preinit] DEBUG o.h.v.m.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
-12:34:45.049 [main] INFO  com.study.bankservice.WorkflowTest - Starting WorkflowTest using Java 17.0.14 with PID 11016 (started by ricardo in /home/ricardo/Documents/projects/bank_service)
-12:34:45.049 [main] DEBUG com.study.bankservice.WorkflowTest - Running with Spring Boot v3.3.3, Spring v6.1.12
-12:34:45.050 [main] INFO  com.study.bankservice.WorkflowTest - No active profile set, falling back to 1 default profile: "default"
-12:34:45.090 [background-preinit] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
-12:34:45.093 [background-preinit] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator as ValidatorFactory-scoped message interpolator.
-12:34:45.093 [background-preinit] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.TraverseAllTraversableResolver as ValidatorFactory-scoped traversable resolver.
-12:34:45.093 [background-preinit] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
-12:34:45.093 [background-preinit] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
-12:34:45.094 [background-preinit] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
-12:34:45.606 [main] DEBUG com.zaxxer.hikari.HikariConfig - Driver class org.h2.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@30946e09
-12:34:45.650 [main] INFO  org.camunda.bpm.spring.boot - STARTER-SB040 Setting up jobExecutor with corePoolSize=3, maxPoolSize:10
-12:34:45.698 [main] INFO  org.camunda.bpm.engine.cfg - ENGINE-12003 Plugin 'CompositeProcessEnginePlugin[genericPropertiesConfiguration, camundaProcessEngineConfiguration, camundaDatasourceConfiguration, camundaJobConfiguration, camundaHistoryConfiguration, camundaMetricsConfiguration, camundaAuthorizationConfiguration, camundaDeploymentConfiguration, createAdminUserConfiguration, failedJobConfiguration, eventPublisherPlugin, ApplicationContextClassloaderSwitchPlugin, SpringBootSpinProcessEnginePlugin]' activated on process engine 'default'
-12:34:46.110 [main] INFO  org.camunda.bpm.spring.boot - STARTER-SB021 Auto-Deploying resources: [file [/home/ricardo/Documents/projects/bank_service/target/classes/process.bpmn]]
-12:34:46.110 [main] INFO  o.c.b.s.b.s.e.EventPublisherPlugin - EVENTING-001: Initialized Camunda Spring Boot Eventing Engine Plugin.
-12:34:46.111 [main] INFO  o.c.b.s.b.s.e.EventPublisherPlugin - EVENTING-003: Task events will be published as Spring Events.
-12:34:46.111 [main] INFO  o.c.b.s.b.s.e.EventPublisherPlugin - EVENTING-005: Execution events will be published as Spring Events.
-12:34:46.111 [main] INFO  o.c.b.s.b.s.e.EventPublisherPlugin - EVENTING-009: Listeners will not be invoked if a skipCustomListeners API parameter is set to true by user.
-12:34:46.112 [main] INFO  o.c.b.s.b.s.e.EventPublisherPlugin - EVENTING-007: History events will be published as Spring events.
-12:34:46.114 [main] INFO  org.camunda.spin - SPIN-01010 Discovered Spin data format provider: org.camunda.spin.impl.json.jackson.format.JacksonJsonDataFormatProvider[name = application/json]
-12:34:46.134 [main] INFO  org.camunda.spin - SPIN-01011 Discovered Spin data format configurator: class org.camunda.bpm.spring.boot.starter.spin.CamundaJacksonFormatConfiguratorJSR310[dataformat = org.camunda.spin.impl.json.jackson.format.JacksonJsonDataFormat]
-12:34:46.134 [main] INFO  org.camunda.spin - SPIN-01011 Discovered Spin data format configurator: class org.camunda.bpm.spring.boot.starter.spin.CamundaJacksonFormatConfiguratorParameterNames[dataformat = org.camunda.spin.impl.json.jackson.format.JacksonJsonDataFormat]
-12:34:46.134 [main] INFO  org.camunda.spin - SPIN-01011 Discovered Spin data format configurator: class org.camunda.bpm.spring.boot.starter.spin.CamundaJacksonFormatConfiguratorJdk8[dataformat = org.camunda.spin.impl.json.jackson.format.JacksonJsonDataFormat]
-12:34:46.134 [main] INFO  org.camunda.spin - SPIN-01009 Discovered Spin data format: org.camunda.spin.impl.json.jackson.format.JacksonJsonDataFormat[name = application/json]
-12:34:46.136 [main] INFO  org.camunda.bpm.dmn.feel.scala - FEEL/SCALA-01001 Spin value mapper detected
-12:34:46.136 [main] INFO  org.camunda.feel.FeelEngine - Engine created. [value-mapper: CompositeValueMapper(List(org.camunda.feel.impl.JavaValueMapper@58ac0823, org.camunda.spin.plugin.impl.feel.integration.SpinValueMapper@2d705998)), function-provider: org.camunda.bpm.dmn.feel.impl.scala.function.CustomFunctionTransformer@28a3fc34, clock: SystemClock, configuration: {externalFunctionsEnabled: false}]
-12:34:46.141 [main] DEBUG com.zaxxer.hikari.HikariConfig - HikariPool-1 - configuration:
-12:34:46.144 [main] DEBUG com.zaxxer.hikari.HikariConfig - allowPoolSuspension.............false
-12:34:46.145 [main] DEBUG com.zaxxer.hikari.HikariConfig - autoCommit......................true
-12:34:46.145 [main] DEBUG com.zaxxer.hikari.HikariConfig - catalog.........................none
-12:34:46.145 [main] DEBUG com.zaxxer.hikari.HikariConfig - connectionInitSql...............none
-12:34:46.145 [main] DEBUG com.zaxxer.hikari.HikariConfig - connectionTestQuery.............none
-12:34:46.145 [main] DEBUG com.zaxxer.hikari.HikariConfig - connectionTimeout...............30000
-12:34:46.145 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSource......................none
-12:34:46.145 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceClassName.............none
-12:34:46.145 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceJNDI..................none
-12:34:46.145 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceProperties............{password=<masked>}
-12:34:46.145 [main] DEBUG com.zaxxer.hikari.HikariConfig - driverClassName................."org.h2.Driver"
-12:34:46.146 [main] DEBUG com.zaxxer.hikari.HikariConfig - exceptionOverrideClassName......none
-12:34:46.146 [main] DEBUG com.zaxxer.hikari.HikariConfig - healthCheckProperties...........{}
-12:34:46.146 [main] DEBUG com.zaxxer.hikari.HikariConfig - healthCheckRegistry.............none
-12:34:46.146 [main] DEBUG com.zaxxer.hikari.HikariConfig - idleTimeout.....................600000
-12:34:46.146 [main] DEBUG com.zaxxer.hikari.HikariConfig - initializationFailTimeout.......1
-12:34:46.146 [main] DEBUG com.zaxxer.hikari.HikariConfig - isolateInternalQueries..........false
-12:34:46.146 [main] DEBUG com.zaxxer.hikari.HikariConfig - jdbcUrl.........................jdbc:h2:file:./camunda-h2-database
-12:34:46.146 [main] DEBUG com.zaxxer.hikari.HikariConfig - keepaliveTime...................0
-12:34:46.146 [main] DEBUG com.zaxxer.hikari.HikariConfig - leakDetectionThreshold..........0
-12:34:46.146 [main] DEBUG com.zaxxer.hikari.HikariConfig - maxLifetime.....................1800000
-12:34:46.146 [main] DEBUG com.zaxxer.hikari.HikariConfig - maximumPoolSize.................10
-12:34:46.146 [main] DEBUG com.zaxxer.hikari.HikariConfig - metricRegistry..................none
-12:34:46.146 [main] DEBUG com.zaxxer.hikari.HikariConfig - metricsTrackerFactory...........none
-12:34:46.146 [main] DEBUG com.zaxxer.hikari.HikariConfig - minimumIdle.....................10
-12:34:46.147 [main] DEBUG com.zaxxer.hikari.HikariConfig - password........................<masked>
-12:34:46.147 [main] DEBUG com.zaxxer.hikari.HikariConfig - poolName........................"HikariPool-1"
-12:34:46.147 [main] DEBUG com.zaxxer.hikari.HikariConfig - readOnly........................false
-12:34:46.147 [main] DEBUG com.zaxxer.hikari.HikariConfig - registerMbeans..................false
-12:34:46.147 [main] DEBUG com.zaxxer.hikari.HikariConfig - scheduledExecutor...............none
-12:34:46.147 [main] DEBUG com.zaxxer.hikari.HikariConfig - schema..........................none
-12:34:46.147 [main] DEBUG com.zaxxer.hikari.HikariConfig - threadFactory...................internal
-12:34:46.147 [main] DEBUG com.zaxxer.hikari.HikariConfig - transactionIsolation............default
-12:34:46.147 [main] DEBUG com.zaxxer.hikari.HikariConfig - username........................none
-12:34:46.147 [main] DEBUG com.zaxxer.hikari.HikariConfig - validationTimeout...............5000
-12:34:46.147 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-12:34:46.172 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn1: url=jdbc:h2:file:./camunda-h2-database user=
-12:34:46.174 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-12:34:46.274 [HikariPool-1 housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=1, active=0, idle=1, waiting=0)
-12:34:46.275 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn2: url=jdbc:h2:file:./camunda-h2-database user=
-12:34:46.305 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=2, active=0, idle=2, waiting=0)
-12:34:46.306 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn3: url=jdbc:h2:file:./camunda-h2-database user=
-12:34:46.336 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=3, active=0, idle=3, waiting=0)
-12:34:46.337 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn4: url=jdbc:h2:file:./camunda-h2-database user=
-12:34:46.367 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=4, active=0, idle=4, waiting=0)
-12:34:46.368 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn5: url=jdbc:h2:file:./camunda-h2-database user=
-12:34:46.398 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=5, active=0, idle=5, waiting=0)
-12:34:46.399 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn6: url=jdbc:h2:file:./camunda-h2-database user=
-12:34:46.429 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=6, active=0, idle=6, waiting=0)
-12:34:46.430 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn7: url=jdbc:h2:file:./camunda-h2-database user=
-12:34:46.460 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=7, active=0, idle=7, waiting=0)
-12:34:46.461 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn8: url=jdbc:h2:file:./camunda-h2-database user=
-12:34:46.491 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=8, active=0, idle=8, waiting=0)
-12:34:46.492 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn9: url=jdbc:h2:file:./camunda-h2-database user=
-12:34:46.522 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=9, active=0, idle=9, waiting=0)
-12:34:46.522 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn10: url=jdbc:h2:file:./camunda-h2-database user=
-12:34:46.553 [HikariPool-1 connection adder] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After adding stats (total=10, active=0, idle=10, waiting=0)
-12:34:46.835 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'engine' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.engine.sql'
-12:34:46.854 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'history' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.history.sql'
-12:34:46.860 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'identity' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.identity.sql'
-12:34:46.866 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'case.engine' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.case.engine.sql'
-12:34:46.868 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'case.history' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.case.history.sql'
-12:34:46.870 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'decision.engine' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.decision.engine.sql'
-12:34:46.874 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03016 Performing database operation 'create' on component 'decision.history' with resource 'org/camunda/bpm/engine/db/create/activiti.h2.create.decision.history.sql'
-12:34:46.878 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03067 No history level property found in database
-12:34:46.878 [main] INFO  org.camunda.bpm.engine.persistence - ENGINE-03065 Creating historyLevel property in database for level: HistoryLevelFull(name=full, id=3)
-12:34:46.882 [main] INFO  org.camunda.bpm.engine - ENGINE-00001 Process Engine default created.
-12:34:47.111 [main] INFO  o.c.b.s.b.s.r.CamundaJerseyResourceConfig - Configuring camunda rest api.
-12:34:47.126 [main] INFO  o.c.b.s.b.s.r.CamundaJerseyResourceConfig - Finished configuring camunda rest api.
-12:34:47.245 [main] DEBUG o.h.v.m.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
-12:34:47.247 [main] DEBUG o.h.v.i.e.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
-12:34:47.247 [main] DEBUG o.h.v.i.e.AbstractConfigurationImpl - Setting custom ConstraintValidatorFactory of type org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory
-12:34:47.248 [main] DEBUG o.h.v.i.x.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
-12:34:47.249 [main] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via user class loader
-12:34:47.249 [main] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
-12:34:47.249 [main] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
-12:34:47.249 [main] DEBUG o.h.v.i.x.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
-12:34:47.249 [main] DEBUG o.h.v.i.e.r.TraversableResolvers - Cannot find jakarta.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
-12:34:47.250 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
-12:34:47.250 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
-12:34:47.250 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.TraverseAllTraversableResolver as ValidatorFactory-scoped traversable resolver.
-12:34:47.250 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
-12:34:47.250 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
-12:34:47.251 [main] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
-12:34:47.315 [main] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-12:34:47.329 [main] DEBUG _.s.w.s.HandlerMapping.Mappings - 'viewControllerHandlerMapping' {/=ParameterizableViewController [view=org.springframework.web.servlet.view.RedirectView: [RedirectView]; URL [/camunda/app/]]}
-12:34:47.332 [main] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-12:34:47.350 [main] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]], /camunda/lib/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/camunda/lib/]], /camunda/api/**=ResourceHttpRequestHandler [classpath [api/]], /camunda/app/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/camunda/app/]], /camunda/assets/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/camunda/assets/]], /camunda/favicon.ico=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/camunda]]}
-12:34:47.454 [main] INFO  com.study.bankservice.WorkflowTest - Started WorkflowTest in 2.572 seconds (process running for 4.916)
-12:34:47.457 [main] INFO  org.camunda.bpm.engine.jobexecutor - ENGINE-14014 Starting up the JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor].
-12:34:47.458 [JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor]] INFO  org.camunda.bpm.engine.jobexecutor - ENGINE-14018 JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor] starting to acquire jobs
-12:34:48.047 [main] DEBUG org.camunda.bpm.engine.test - annotation @Deployment deletes deployment for WorkflowTest.shouldExecuteHappyPath
+16:11:11.550 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
+16:11:11.550 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+16:11:11.553 [background-preinit] DEBUG o.h.v.i.x.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+16:11:11.554 [background-preinit] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+16:11:11.554 [background-preinit] DEBUG o.h.v.i.x.c.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+16:11:11.554 [background-preinit] DEBUG o.h.v.i.x.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+16:11:11.556 [background-preinit] DEBUG o.h.v.i.e.r.TraversableResolvers - Cannot find jakarta.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
+16:11:11.568 [background-preinit] DEBUG o.h.v.m.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+16:11:11.572 [main] INFO  com.study.bankservice.WorkflowTest - Starting WorkflowTest using Java 17.0.14 with PID 15856 (started by ricardo in /home/ricardo/Documents/projects/bank_service)
+16:11:11.572 [main] DEBUG com.study.bankservice.WorkflowTest - Running with Spring Boot v3.3.3, Spring v6.1.12
+16:11:11.573 [main] INFO  com.study.bankservice.WorkflowTest - No active profile set, falling back to 1 default profile: "default"
+16:11:11.617 [background-preinit] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+16:11:11.621 [background-preinit] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator as ValidatorFactory-scoped message interpolator.
+16:11:11.621 [background-preinit] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.TraverseAllTraversableResolver as ValidatorFactory-scoped traversable resolver.
+16:11:11.621 [background-preinit] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+16:11:11.621 [background-preinit] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+16:11:11.621 [background-preinit] DEBUG o.h.v.i.e.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+16:11:12.206 [main] DEBUG com.zaxxer.hikari.HikariConfig - Driver class org.h2.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@30946e09
+16:11:12.261 [main] INFO  org.camunda.bpm.spring.boot - STARTER-SB040 Setting up jobExecutor with corePoolSize=3, maxPoolSize:10
+16:11:12.315 [main] INFO  org.camunda.bpm.engine.cfg - ENGINE-12003 Plugin 'CompositeProcessEnginePlugin[genericPropertiesConfiguration, camundaProcessEngineConfiguration, camundaDatasourceConfiguration, camundaJobConfiguration, camundaHistoryConfiguration, camundaMetricsConfiguration, camundaAuthorizationConfiguration, camundaDeploymentConfiguration, createAdminUserConfiguration, failedJobConfiguration, eventPublisherPlugin, ApplicationContextClassloaderSwitchPlugin, SpringBootSpinProcessEnginePlugin]' activated on process engine 'default'
+16:11:12.709 [main] INFO  org.camunda.bpm.spring.boot - STARTER-SB021 Auto-Deploying resources: [file [/home/ricardo/Documents/projects/bank_service/target/classes/process.bpmn], file [/home/ricardo/Documents/projects/bank_service/target/classes/bpmn/credit/credit-obtaning.bpmn], file [/home/ricardo/Documents/projects/bank_service/target/classes/bpmn/main/main-deposit-credit-process.bpmn], file [/home/ricardo/Documents/projects/bank_service/target/classes/bpmn/goingHome/going-home.bpmn], file [/home/ricardo/Documents/projects/bank_service/target/classes/bpmn/deposit/deposit-opening.bpmn]]
+16:11:12.710 [main] INFO  o.c.b.s.b.s.e.EventPublisherPlugin - EVENTING-001: Initialized Camunda Spring Boot Eventing Engine Plugin.
+16:11:12.711 [main] INFO  o.c.b.s.b.s.e.EventPublisherPlugin - EVENTING-003: Task events will be published as Spring Events.
+16:11:12.711 [main] INFO  o.c.b.s.b.s.e.EventPublisherPlugin - EVENTING-005: Execution events will be published as Spring Events.
+16:11:12.711 [main] INFO  o.c.b.s.b.s.e.EventPublisherPlugin - EVENTING-009: Listeners will not be invoked if a skipCustomListeners API parameter is set to true by user.
+16:11:12.712 [main] INFO  o.c.b.s.b.s.e.EventPublisherPlugin - EVENTING-007: History events will be published as Spring events.
+16:11:12.715 [main] INFO  org.camunda.spin - SPIN-01010 Discovered Spin data format provider: org.camunda.spin.impl.json.jackson.format.JacksonJsonDataFormatProvider[name = application/json]
+16:11:12.739 [main] INFO  org.camunda.spin - SPIN-01011 Discovered Spin data format configurator: class org.camunda.bpm.spring.boot.starter.spin.CamundaJacksonFormatConfiguratorJSR310[dataformat = org.camunda.spin.impl.json.jackson.format.JacksonJsonDataFormat]
+16:11:12.739 [main] INFO  org.camunda.spin - SPIN-01011 Discovered Spin data format configurator: class org.camunda.bpm.spring.boot.starter.spin.CamundaJacksonFormatConfiguratorParameterNames[dataformat = org.camunda.spin.impl.json.jackson.format.JacksonJsonDataFormat]
+16:11:12.739 [main] INFO  org.camunda.spin - SPIN-01011 Discovered Spin data format configurator: class org.camunda.bpm.spring.boot.starter.spin.CamundaJacksonFormatConfiguratorJdk8[dataformat = org.camunda.spin.impl.json.jackson.format.JacksonJsonDataFormat]
+16:11:12.740 [main] INFO  org.camunda.spin - SPIN-01009 Discovered Spin data format: org.camunda.spin.impl.json.jackson.format.JacksonJsonDataFormat[name = application/json]
+16:11:12.742 [main] INFO  org.camunda.bpm.dmn.feel.scala - FEEL/SCALA-01001 Spin value mapper detected
+16:11:12.742 [main] INFO  org.camunda.feel.FeelEngine - Engine created. [value-mapper: CompositeValueMapper(List(org.camunda.feel.impl.JavaValueMapper@2a5efbb9, org.camunda.spin.plugin.impl.feel.integration.SpinValueMapper@43b45ce4)), function-provider: org.camunda.bpm.dmn.feel.impl.scala.function.CustomFunctionTransformer@73e93c3a, clock: SystemClock, configuration: {externalFunctionsEnabled: false}]
+16:11:12.749 [main] DEBUG com.zaxxer.hikari.HikariConfig - HikariPool-1 - configuration:
+16:11:12.753 [main] DEBUG com.zaxxer.hikari.HikariConfig - allowPoolSuspension.............false
+16:11:12.753 [main] DEBUG com.zaxxer.hikari.HikariConfig - autoCommit......................true
+16:11:12.753 [main] DEBUG com.zaxxer.hikari.HikariConfig - catalog.........................none
+16:11:12.753 [main] DEBUG com.zaxxer.hikari.HikariConfig - connectionInitSql...............none
+16:11:12.753 [main] DEBUG com.zaxxer.hikari.HikariConfig - connectionTestQuery.............none
+16:11:12.753 [main] DEBUG com.zaxxer.hikari.HikariConfig - connectionTimeout...............30000
+16:11:12.753 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSource......................none
+16:11:12.753 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceClassName.............none
+16:11:12.754 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceJNDI..................none
+16:11:12.754 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceProperties............{password=<masked>}
+16:11:12.754 [main] DEBUG com.zaxxer.hikari.HikariConfig - driverClassName................."org.h2.Driver"
+16:11:12.754 [main] DEBUG com.zaxxer.hikari.HikariConfig - exceptionOverrideClassName......none
+16:11:12.754 [main] DEBUG com.zaxxer.hikari.HikariConfig - healthCheckProperties...........{}
+16:11:12.754 [main] DEBUG com.zaxxer.hikari.HikariConfig - healthCheckRegistry.............none
+16:11:12.755 [main] DEBUG com.zaxxer.hikari.HikariConfig - idleTimeout.....................600000
+16:11:12.755 [main] DEBUG com.zaxxer.hikari.HikariConfig - initializationFailTimeout.......1
+16:11:12.755 [main] DEBUG com.zaxxer.hikari.HikariConfig - isolateInternalQueries..........false
+16:11:12.755 [main] DEBUG com.zaxxer.hikari.HikariConfig - jdbcUrl.........................jdbc:h2:file:./camunda-h2-database
+16:11:12.755 [main] DEBUG com.zaxxer.hikari.HikariConfig - keepaliveTime...................0
+16:11:12.755 [main] DEBUG com.zaxxer.hikari.HikariConfig - leakDetectionThreshold..........0
+16:11:12.755 [main] DEBUG com.zaxxer.hikari.HikariConfig - maxLifetime.....................1800000
+16:11:12.755 [main] DEBUG com.zaxxer.hikari.HikariConfig - maximumPoolSize.................10
+16:11:12.755 [main] DEBUG com.zaxxer.hikari.HikariConfig - metricRegistry..................none
+16:11:12.755 [main] DEBUG com.zaxxer.hikari.HikariConfig - metricsTrackerFactory...........none
+16:11:12.755 [main] DEBUG com.zaxxer.hikari.HikariConfig - minimumIdle.....................10
+16:11:12.756 [main] DEBUG com.zaxxer.hikari.HikariConfig - password........................<masked>
+16:11:12.756 [main] DEBUG com.zaxxer.hikari.HikariConfig - poolName........................"HikariPool-1"
+16:11:12.756 [main] DEBUG com.zaxxer.hikari.HikariConfig - readOnly........................false
+16:11:12.756 [main] DEBUG com.zaxxer.hikari.HikariConfig - registerMbeans..................false
+16:11:12.756 [main] DEBUG com.zaxxer.hikari.HikariConfig - scheduledExecutor...............none
+16:11:12.756 [main] DEBUG com.zaxxer.hikari.HikariConfig - schema..........................none
+16:11:12.756 [main] DEBUG com.zaxxer.hikari.HikariConfig - threadFactory...................internal
+16:11:12.756 [main] DEBUG com.zaxxer.hikari.HikariConfig - transactionIsolation............default
+16:11:12.756 [main] DEBUG com.zaxxer.hikari.HikariConfig - username........................"sa"
+16:11:12.756 [main] DEBUG com.zaxxer.hikari.HikariConfig - validationTimeout...............5000
+16:11:12.756 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+16:11:13.136 [main] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to create/setup connection: Wrong user name or password [28000-224]
+16:11:13.136 [main] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Cannot acquire connection from data source
+org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.engine.Engine.validateUserAndPassword(Engine.java:396)
+	at org.h2.engine.Engine.createSession(Engine.java:206)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118)
+	at org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy$TransactionAwareInvocationHandler.invoke(TransactionAwareDataSourceProxy.java:247)
+	at jdk.proxy2/jdk.proxy2.$Proxy75.getTransactionIsolation(Unknown Source)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.getCurrentTransactionIsolationLevel(ProcessEngineConfigurationImpl.java:1714)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.checkTransactionIsolationLevel(ProcessEngineConfigurationImpl.java:1701)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.initDataSource(ProcessEngineConfigurationImpl.java:1692)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.init(ProcessEngineConfigurationImpl.java:1149)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.buildProcessEngine(ProcessEngineConfigurationImpl.java:1120)
+	at org.camunda.bpm.engine.spring.SpringTransactionsProcessEngineConfiguration.buildProcessEngine(SpringTransactionsProcessEngineConfiguration.java:65)
+	at org.camunda.bpm.engine.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:55)
+	at org.camunda.bpm.engine.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:34)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:182)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.getObjectFromFactoryBean(FactoryBeanRegistrySupport.java:124)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getObjectForBeanInstance(AbstractBeanFactory.java:1867)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.getObjectForBeanInstance(AbstractAutowireCapableBeanFactory.java:1296)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:259)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1696)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1397)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1439)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$3(SpringBootContextLoader.java:137)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46)
+	at org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1463)
+	at org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:553)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:137)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:108)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:225)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:152)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:191)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:130)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:260)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.vintage.engine.execution.RunnerExecutor.execute(RunnerExecutor.java:42)
+	at org.junit.vintage.engine.VintageTestEngine.executeAllChildren(VintageTestEngine.java:80)
+	at org.junit.vintage.engine.VintageTestEngine.execute(VintageTestEngine.java:72)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+16:11:14.140 [main] DEBUG com.zaxxer.hikari.HikariConfig - HikariPool-1 - configuration:
+16:11:14.142 [main] DEBUG com.zaxxer.hikari.HikariConfig - allowPoolSuspension.............false
+16:11:14.142 [main] DEBUG com.zaxxer.hikari.HikariConfig - autoCommit......................true
+16:11:14.142 [main] DEBUG com.zaxxer.hikari.HikariConfig - catalog.........................none
+16:11:14.142 [main] DEBUG com.zaxxer.hikari.HikariConfig - connectionInitSql...............none
+16:11:14.142 [main] DEBUG com.zaxxer.hikari.HikariConfig - connectionTestQuery.............none
+16:11:14.142 [main] DEBUG com.zaxxer.hikari.HikariConfig - connectionTimeout...............30000
+16:11:14.142 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSource......................none
+16:11:14.142 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceClassName.............none
+16:11:14.142 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceJNDI..................none
+16:11:14.142 [main] DEBUG com.zaxxer.hikari.HikariConfig - dataSourceProperties............{password=<masked>}
+16:11:14.142 [main] DEBUG com.zaxxer.hikari.HikariConfig - driverClassName................."org.h2.Driver"
+16:11:14.142 [main] DEBUG com.zaxxer.hikari.HikariConfig - exceptionOverrideClassName......none
+16:11:14.142 [main] DEBUG com.zaxxer.hikari.HikariConfig - healthCheckProperties...........{}
+16:11:14.142 [main] DEBUG com.zaxxer.hikari.HikariConfig - healthCheckRegistry.............none
+16:11:14.143 [main] DEBUG com.zaxxer.hikari.HikariConfig - idleTimeout.....................600000
+16:11:14.143 [main] DEBUG com.zaxxer.hikari.HikariConfig - initializationFailTimeout.......1
+16:11:14.143 [main] DEBUG com.zaxxer.hikari.HikariConfig - isolateInternalQueries..........false
+16:11:14.143 [main] DEBUG com.zaxxer.hikari.HikariConfig - jdbcUrl.........................jdbc:h2:file:./camunda-h2-database
+16:11:14.143 [main] DEBUG com.zaxxer.hikari.HikariConfig - keepaliveTime...................0
+16:11:14.143 [main] DEBUG com.zaxxer.hikari.HikariConfig - leakDetectionThreshold..........0
+16:11:14.143 [main] DEBUG com.zaxxer.hikari.HikariConfig - maxLifetime.....................1800000
+16:11:14.143 [main] DEBUG com.zaxxer.hikari.HikariConfig - maximumPoolSize.................10
+16:11:14.143 [main] DEBUG com.zaxxer.hikari.HikariConfig - metricRegistry..................none
+16:11:14.143 [main] DEBUG com.zaxxer.hikari.HikariConfig - metricsTrackerFactory...........none
+16:11:14.143 [main] DEBUG com.zaxxer.hikari.HikariConfig - minimumIdle.....................10
+16:11:14.143 [main] DEBUG com.zaxxer.hikari.HikariConfig - password........................<masked>
+16:11:14.143 [main] DEBUG com.zaxxer.hikari.HikariConfig - poolName........................"HikariPool-1"
+16:11:14.143 [main] DEBUG com.zaxxer.hikari.HikariConfig - readOnly........................false
+16:11:14.143 [main] DEBUG com.zaxxer.hikari.HikariConfig - registerMbeans..................false
+16:11:14.144 [main] DEBUG com.zaxxer.hikari.HikariConfig - scheduledExecutor...............none
+16:11:14.144 [main] DEBUG com.zaxxer.hikari.HikariConfig - schema..........................none
+16:11:14.144 [main] DEBUG com.zaxxer.hikari.HikariConfig - threadFactory...................internal
+16:11:14.144 [main] DEBUG com.zaxxer.hikari.HikariConfig - transactionIsolation............default
+16:11:14.144 [main] DEBUG com.zaxxer.hikari.HikariConfig - username........................"sa"
+16:11:14.144 [main] DEBUG com.zaxxer.hikari.HikariConfig - validationTimeout...............5000
+16:11:14.144 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+16:11:14.757 [main] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to create/setup connection: Wrong user name or password [28000-224]
+16:11:14.758 [main] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Cannot acquire connection from data source
+org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.engine.Engine.validateUserAndPassword(Engine.java:396)
+	at org.h2.engine.Engine.createSession(Engine.java:206)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118)
+	at org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy$TransactionAwareInvocationHandler.invoke(TransactionAwareDataSourceProxy.java:247)
+	at jdk.proxy2/jdk.proxy2.$Proxy75.getMetaData(Unknown Source)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.initDatabaseType(ProcessEngineConfigurationImpl.java:1759)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.initDataSource(ProcessEngineConfigurationImpl.java:1696)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.init(ProcessEngineConfigurationImpl.java:1149)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.buildProcessEngine(ProcessEngineConfigurationImpl.java:1120)
+	at org.camunda.bpm.engine.spring.SpringTransactionsProcessEngineConfiguration.buildProcessEngine(SpringTransactionsProcessEngineConfiguration.java:65)
+	at org.camunda.bpm.engine.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:55)
+	at org.camunda.bpm.engine.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:34)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:182)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.getObjectFromFactoryBean(FactoryBeanRegistrySupport.java:124)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getObjectForBeanInstance(AbstractBeanFactory.java:1867)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.getObjectForBeanInstance(AbstractAutowireCapableBeanFactory.java:1296)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:259)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1696)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1397)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1439)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$3(SpringBootContextLoader.java:137)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46)
+	at org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1463)
+	at org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:553)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:137)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:108)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:225)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:152)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:191)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:130)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:260)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.vintage.engine.execution.RunnerExecutor.execute(RunnerExecutor.java:42)
+	at org.junit.vintage.engine.VintageTestEngine.executeAllChildren(VintageTestEngine.java:80)
+	at org.junit.vintage.engine.VintageTestEngine.execute(VintageTestEngine.java:72)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+16:11:15.760 [main] WARN  o.s.w.c.s.GenericWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'camundaIntegrationDeterminator': Unsatisfied dependency expressed through field 'processEngine': Error creating bean with name 'processEngineFactoryBean': FactoryBean threw exception on object creation
+16:11:15.769 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+16:11:15.780 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'camundaIntegrationDeterminator': Unsatisfied dependency expressed through field 'processEngine': Error creating bean with name 'processEngineFactoryBean': FactoryBean threw exception on object creation
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1439)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$3(SpringBootContextLoader.java:137)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46)
+	at org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1463)
+	at org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:553)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:137)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:108)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:225)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:152)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:191)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:130)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:260)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.vintage.engine.execution.RunnerExecutor.execute(RunnerExecutor.java:42)
+	at org.junit.vintage.engine.VintageTestEngine.executeAllChildren(VintageTestEngine.java:80)
+	at org.junit.vintage.engine.VintageTestEngine.execute(VintageTestEngine.java:72)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'processEngineFactoryBean': FactoryBean threw exception on object creation
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:188)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.getObjectFromFactoryBean(FactoryBeanRegistrySupport.java:124)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getObjectForBeanInstance(AbstractBeanFactory.java:1867)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.getObjectForBeanInstance(AbstractAutowireCapableBeanFactory.java:1296)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:259)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1696)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1397)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785)
+	... 67 common frames omitted
+Caused by: org.camunda.bpm.engine.ProcessEngineException: ENGINE-12012 Exception on accessing the database connection: Wrong user name or password [28000-224]
+	at org.camunda.bpm.engine.impl.cfg.ConfigurationLogger.databaseConnectionAccessException(ConfigurationLogger.java:95)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.initDatabaseType(ProcessEngineConfigurationImpl.java:1775)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.initDataSource(ProcessEngineConfigurationImpl.java:1696)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.init(ProcessEngineConfigurationImpl.java:1149)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.buildProcessEngine(ProcessEngineConfigurationImpl.java:1120)
+	at org.camunda.bpm.engine.spring.SpringTransactionsProcessEngineConfiguration.buildProcessEngine(SpringTransactionsProcessEngineConfiguration.java:65)
+	at org.camunda.bpm.engine.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:55)
+	at org.camunda.bpm.engine.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:34)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:182)
+	... 78 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.engine.Engine.validateUserAndPassword(Engine.java:396)
+	at org.h2.engine.Engine.createSession(Engine.java:206)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118)
+	at org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy$TransactionAwareInvocationHandler.invoke(TransactionAwareDataSourceProxy.java:247)
+	at jdk.proxy2/jdk.proxy2.$Proxy75.getMetaData(Unknown Source)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.initDatabaseType(ProcessEngineConfigurationImpl.java:1759)
+	... 85 common frames omitted
+16:11:15.785 [main] WARN  o.s.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener] to prepare test instance [com.study.bankservice.WorkflowTest@20960b51]
+java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@1d40f597 testClass = com.study.bankservice.WorkflowTest, locations = [], classes = [com.study.bankservice.Application], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [], propertySourceProperties = ["org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true"], contextCustomizers = [org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@3406472c, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@40317ba2, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@13d4992d, org.springframework.boot.test.web.reactor.netty.DisableReactorResourceFactoryGlobalResourcesContextCustomizerFactory$DisableReactorResourceFactoryGlobalResourcesContextCustomizerCustomizer@3e74829, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@6f19ac19, org.springframework.boot.test.context.SpringBootTestAnnotation@f5296efa], resourceBasePath = "src/main/webapp", contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:180)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:191)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:130)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:260)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.vintage.engine.execution.RunnerExecutor.execute(RunnerExecutor.java:42)
+	at org.junit.vintage.engine.VintageTestEngine.executeAllChildren(VintageTestEngine.java:80)
+	at org.junit.vintage.engine.VintageTestEngine.execute(VintageTestEngine.java:72)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'camundaIntegrationDeterminator': Unsatisfied dependency expressed through field 'processEngine': Error creating bean with name 'processEngineFactoryBean': FactoryBean threw exception on object creation
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1439)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$3(SpringBootContextLoader.java:137)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46)
+	at org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1463)
+	at org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:553)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:137)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:108)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:225)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:152)
+	... 42 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'processEngineFactoryBean': FactoryBean threw exception on object creation
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:188)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.getObjectFromFactoryBean(FactoryBeanRegistrySupport.java:124)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getObjectForBeanInstance(AbstractBeanFactory.java:1867)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.getObjectForBeanInstance(AbstractAutowireCapableBeanFactory.java:1296)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:259)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1696)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1397)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785)
+	... 67 common frames omitted
+Caused by: org.camunda.bpm.engine.ProcessEngineException: ENGINE-12012 Exception on accessing the database connection: Wrong user name or password [28000-224]
+	at org.camunda.bpm.engine.impl.cfg.ConfigurationLogger.databaseConnectionAccessException(ConfigurationLogger.java:95)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.initDatabaseType(ProcessEngineConfigurationImpl.java:1775)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.initDataSource(ProcessEngineConfigurationImpl.java:1696)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.init(ProcessEngineConfigurationImpl.java:1149)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.buildProcessEngine(ProcessEngineConfigurationImpl.java:1120)
+	at org.camunda.bpm.engine.spring.SpringTransactionsProcessEngineConfiguration.buildProcessEngine(SpringTransactionsProcessEngineConfiguration.java:65)
+	at org.camunda.bpm.engine.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:55)
+	at org.camunda.bpm.engine.spring.ProcessEngineFactoryBean.getObject(ProcessEngineFactoryBean.java:34)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:182)
+	... 78 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.engine.Engine.validateUserAndPassword(Engine.java:396)
+	at org.h2.engine.Engine.createSession(Engine.java:206)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118)
+	at org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy$TransactionAwareInvocationHandler.invoke(TransactionAwareDataSourceProxy.java:247)
+	at jdk.proxy2/jdk.proxy2.$Proxy75.getMetaData(Unknown Source)
+	at org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl.initDatabaseType(ProcessEngineConfigurationImpl.java:1759)
+	... 85 common frames omitted
 ]]></system-out>
+    <system-err><![CDATA[
+
+
+============================
+CONDITIONS EVALUATION REPORT
+============================
+
+
+Positive matches:
+-----------------
+
+    None
+
+
+Negative matches:
+-----------------
+
+    None
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+]]></system-err>
   </testcase>
 </testsuite>

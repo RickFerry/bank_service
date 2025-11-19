@@ -23,6 +23,5 @@ public class TaxiPaymentDelegate implements JavaDelegate {
         log.info("Client just has peed for the taxi about {} ", taxiCost);
 
         client.getWallet().setMoneyCount(moneyOnWallet);
-        delegateExecution.setVariable("client", client);
     }
 }

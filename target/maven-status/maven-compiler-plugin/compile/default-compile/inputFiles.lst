@@ -1,1 +1,5 @@
 /home/ricardo/Documents/projects/bank_service/src/main/java/com/study/bankservice/Application.java
+/home/ricardo/Documents/projects/bank_service/src/main/java/com/study/bankservice/model/Client.java
+/home/ricardo/Documents/projects/bank_service/src/main/java/com/study/bankservice/model/Passport.java
+/home/ricardo/Documents/projects/bank_service/src/main/java/com/study/bankservice/model/Wallet.java
+/home/ricardo/Documents/projects/bank_service/src/main/java/com/study/bankservice/service/way/delegate/TaxiPaymentDelegate.java

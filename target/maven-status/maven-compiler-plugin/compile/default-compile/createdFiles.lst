@@ -1,1 +1,8 @@
+com/study/bankservice/model/Client.class
+com/study/bankservice/service/way/delegate/TaxiPaymentDelegate.class
+com/study/bankservice/model/Client$ClientBuilder.class
+com/study/bankservice/model/Wallet$WalletBuilder.class
+com/study/bankservice/model/Wallet.class
+com/study/bankservice/model/Passport$PassportBuilder.class
 com/study/bankservice/Application.class
+com/study/bankservice/model/Passport.class
