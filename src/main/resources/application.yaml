@@ -1,5 +1,23 @@
-spring.datasource.url: jdbc:h2:file:./camunda-h2-database
+spring:
+  application:
+    name: backend-service
+  datasource:
+    url: jdbc:h2:file:./camunda-h2-database;AUTO_SERVER=TRUE
 
-camunda.bpm.admin-user:
-  id: demo
-  password: demo
+camunda:
+  bpm:
+    admin-user:
+      id: demo
+      password: demo
+    default-serialization-format: json
+    generic-properties:
+      properties:
+        history-time-to-live: P1D
+
+logging:
+  level:
+    org:
+      camunda:
+        bpm:
+          engine: INFO
+          spring: INFO
