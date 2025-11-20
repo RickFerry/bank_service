@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class TaxiPaymentDelegate implements JavaDelegate {
 
     @Override
-    public void execute(DelegateExecution delegateExecution) throws Exception {
+    public void execute(DelegateExecution delegateExecution) {
         log.info("The taxi payment has started.");
 
         Client client = (Client) delegateExecution.getVariable("client");

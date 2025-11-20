@@ -60,15 +60,17 @@ public class BankController {
                 .wallet(Wallet.builder()
                         .moneyCount(BigDecimal.valueOf(1000))
                         .build())
-                .passport(Passport.builder()
-                        .identicalNumber("AB1234567")
-                        .name("John Doe")
-                        .surname("Doe")
-                        .address("123 Main St")
-                        .birthDate(LocalDate.parse(BIRTH_AND_VALID_FROM))
-                        .validFrom(LocalDate.parse(BIRTH_AND_VALID_FROM))
-                        .validTo(LocalDate.parse("1990-01-01"))
-                        .build())
+                .passport(null
+//                        Passport.builder()
+//                        .identicalNumber("AB1234567")
+//                        .name("John Doe")
+//                        .surname("Doe")
+//                        .address("123 Main St")
+//                        .birthDate(LocalDate.parse(BIRTH_AND_VALID_FROM))
+//                        .validFrom(LocalDate.parse(BIRTH_AND_VALID_FROM))
+//                        .validTo(LocalDate.parse("1990-01-01"))
+//                        .build()
+                )
                 .build();
     }
 }

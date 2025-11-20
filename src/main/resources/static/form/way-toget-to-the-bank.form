@@ -18,7 +18,7 @@
         "columns": 10
       },
       "id": "Field_0k7quw8",
-      "key": "transpotMode",
+      "key": "transportMode",
       "description": "taxi or walk",
       "defaultValue": "walk"
     },
@@ -43,9 +43,9 @@
   "id": "Form_0oxcqp0",
   "exporter": {
     "name": "Camunda Modeler",
-    "version": "5.34.0"
+    "version": "5.41.0"
   },
   "executionPlatform": "Camunda Platform",
   "executionPlatformVersion": "7.23.0",
-  "schemaVersion": 18
+  "schemaVersion": 19
 }
