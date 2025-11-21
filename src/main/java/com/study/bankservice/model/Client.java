@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Accessors(chain=true)
+@Accessors(chain = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Client {
     String id;
