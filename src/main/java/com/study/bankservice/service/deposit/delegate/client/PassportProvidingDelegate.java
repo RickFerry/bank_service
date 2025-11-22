@@ -7,8 +7,6 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.stereotype.Component;
 
-import java.util.Objects;
-
 import static com.study.bankservice.util.Constants.SUDDEN_OPERATION_INTERRUPTION_ERROR;
 import static java.util.Objects.isNull;
 
