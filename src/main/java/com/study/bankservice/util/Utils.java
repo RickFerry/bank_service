@@ -7,12 +7,12 @@ import com.study.bankservice.model.Wallet;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
 
 import static com.study.bankservice.util.Constants.*;
+import static java.time.LocalDate.parse;
+import static java.time.OffsetDateTime.now;
 
 @Component
 public class Utils {
@@ -31,7 +31,7 @@ public class Utils {
                 .surname("Doe")
                 .address(MAIN_ST)
                 .phoneNumber("555-1234")
-                .birthDate(LocalDate.parse(BIRTH_AND_VALID_FROM))
+                .birthDate(parse(BIRTH_AND_VALID_FROM))
                 .wallet(Wallet.builder()
                         .moneyCount(BigDecimal.valueOf(1000))
                         .build())
@@ -41,9 +41,9 @@ public class Utils {
                                 .name(JOHN_DOE)
                                 .surname("Doe")
                                 .address(MAIN_ST)
-                                .birthDate(LocalDate.parse(BIRTH_AND_VALID_FROM))
-                                .validFrom(LocalDate.parse(BIRTH_AND_VALID_FROM))
-                                .validTo(LocalDate.parse(DATE_VALID_TO))
+                                .birthDate(parse(BIRTH_AND_VALID_FROM))
+                                .validFrom(parse(BIRTH_AND_VALID_FROM))
+                                .validTo(parse(DATE_VALID_TO))
                                 .build()
                 )
                 .build();
@@ -51,12 +51,12 @@ public class Utils {
 
     public static List<Client> getBadClientList() {
         return List.of(Client.builder()
-                .id("1")
+                .id("4")
                 .name("Mike")
                 .surname(SMITH)
                 .address(MAIN_ST)
                 .phoneNumber("555-1234")
-                .birthDate(LocalDate.parse(BIRTH_AND_VALID_FROM))
+                .birthDate(parse(BIRTH_AND_VALID_FROM))
                 .wallet(null)
                 .passport(
                         Passport.builder()
@@ -64,9 +64,9 @@ public class Utils {
                                 .name(JOHN_DOE)
                                 .surname(SMITH)
                                 .address(MAIN_ST)
-                                .birthDate(LocalDate.parse(BIRTH_AND_VALID_FROM))
-                                .validFrom(LocalDate.parse(BIRTH_AND_VALID_FROM))
-                                .validTo(LocalDate.parse(DATE_VALID_TO))
+                                .birthDate(parse(BIRTH_AND_VALID_FROM))
+                                .validFrom(parse(BIRTH_AND_VALID_FROM))
+                                .validTo(parse(DATE_VALID_TO))
                                 .build()
                 )
                 .build());
@@ -95,25 +95,25 @@ public class Utils {
                         .name(JOHN_DOE)
                         .surname("Doe")
                         .address(MAIN_ST)
-                        .birthDate(LocalDate.parse(DATE_VALID_TO))
-                        .validFrom(LocalDate.parse("2015-01-01"))
-                        .validTo(LocalDate.parse("2025-01-01")).build(),
+                        .birthDate(parse(DATE_VALID_TO))
+                        .validFrom(parse("2015-01-01"))
+                        .validTo(parse("2025-01-01")).build(),
                 Passport.builder()
                         .identicalNumber("ID654321")
                         .name("Jane Smith")
                         .surname(SMITH)
                         .address("456 Elm St")
-                        .birthDate(LocalDate.parse("1985-05-15"))
-                        .validFrom(LocalDate.parse("2016-06-01"))
-                        .validTo(LocalDate.parse("2026-06-01")).build(),
+                        .birthDate(parse("1985-05-15"))
+                        .validFrom(parse("2016-06-01"))
+                        .validTo(parse("2026-06-01")).build(),
                 Passport.builder()
                         .identicalNumber("ID789012")
                         .name("Alice Johnson")
                         .surname("Johnson")
                         .address("789 Oak St")
-                        .birthDate(LocalDate.parse("1978-09-30"))
-                        .validFrom(LocalDate.parse("2017-03-15"))
-                        .validTo(LocalDate.parse("2027-03-15")).build()
+                        .birthDate(parse("1978-09-30"))
+                        .validFrom(parse("2017-03-15"))
+                        .validTo(parse("2027-03-15")).build()
         );
     }
 
@@ -123,8 +123,8 @@ public class Utils {
                         .name("Standard Deposit")
                         .minimalSum(new BigDecimal("1000"))
                         .currentSum(new BigDecimal("5000"))
-                        .openDate(OffsetDateTime.now())
-                        .closeDate(OffsetDateTime.now().plusMonths(12))
+                        .openDate(now())
+                        .closeDate(now().plusMonths(12))
                         .percentage(3.5)
                         .isCapitalized(true)
                         .currency("USD")
@@ -134,8 +134,8 @@ public class Utils {
                         .name("Premium Deposit")
                         .minimalSum(new BigDecimal("5000"))
                         .currentSum(new BigDecimal("20000"))
-                        .openDate(OffsetDateTime.now())
-                        .closeDate(OffsetDateTime.now().plusMonths(24))
+                        .openDate(now())
+                        .closeDate(now().plusMonths(24))
                         .percentage(5.0)
                         .isCapitalized(false)
                         .currency("EUR")
@@ -145,8 +145,8 @@ public class Utils {
                         .name("Savings Deposit")
                         .minimalSum(new BigDecimal("2000"))
                         .currentSum(new BigDecimal("10000"))
-                        .openDate(OffsetDateTime.now())
-                        .closeDate(OffsetDateTime.now().plusMonths(18))
+                        .openDate(now())
+                        .closeDate(now().plusMonths(18))
                         .percentage(4.0)
                         .isCapitalized(true)
                         .currency("GBP")
