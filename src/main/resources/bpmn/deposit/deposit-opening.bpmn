@@ -24,9 +24,15 @@
     <bpmn:textAnnotation id="TextAnnotation_0x112s8">
       <bpmn:text>1.Check is client wanted by police.
 2.Is client in the banks black list.
-3.Is client passport valid.</bpmn:text>
+3.Is client passport valid.
+4.Set the result to boolean execution variable.</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_03ei8qp" associationDirection="None" sourceRef="ClientFullValidationId" targetRef="TextAnnotation_0x112s8" />
+    <bpmn:textAnnotation id="TextAnnotation_19iz2rn">
+      <bpmn:text>1.Check is client wanted by police.
+2. Set the result to boolean execution variable.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_18a14mj" associationDirection="None" sourceRef="ClientParticularValidationId" targetRef="TextAnnotation_19iz2rn" />
   </bpmn:collaboration>
   <bpmn:process id="OpeningDeposit" name="DepositOpening" isExecutable="true" camunda:historyTimeToLive="90">
     <bpmn:laneSet id="LaneSet_1yi3fpc">
@@ -34,20 +40,23 @@
         <bpmn:flowNodeRef>PassaportProvidingId</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_07lhl1y</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>DepositChoosingId</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>ErrorPassportShouldBePresentHandleId</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1k66yv9</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_1uw04yg</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GatewayIsDepositChoseen</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0o1nbkt</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ErrorPassportShouldBePresentHandleId</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="BankWorkerId" name="Bank Worker">
         <bpmn:flowNodeRef>DepositListProvidingId</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1fih2fc</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GatewayIsNewClient</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>ClientFullValidationId</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1kgvohn</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ClientParticularValidationId</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_1m54vua</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GatewaySuccessvalidationId</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1k66yv9</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_1uw04yg</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0jhdcfi</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_117ft5l</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:serviceTask id="PassaportProvidingId" name="Provide a passport" camunda:asyncBefore="true" camunda:delegateExpression="${passportProvidingDelegate}">
@@ -76,18 +85,6 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_1fzn7t6</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:scriptTask id="Activity_1k66yv9" name="Deposit opening process" scriptFormat="JavaScript">
-      <bpmn:outgoing>Flow_08ema3g</bpmn:outgoing>
-      <bpmn:script>print('The deposit opening process has finished');
-
-var depositNme = execution.getVariable('depositName');
-
-print('The choosen deposit name is: ' + depositName);</bpmn:script>
-    </bpmn:scriptTask>
-    <bpmn:endEvent id="Event_1uw04yg">
-      <bpmn:incoming>Flow_08ema3g</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_08ema3g" sourceRef="Activity_1k66yv9" targetRef="Event_1uw04yg" />
     <bpmn:sequenceFlow id="Flow_0vg22q7" sourceRef="DepositChoosingId" targetRef="GatewayIsDepositChoseen" />
     <bpmn:exclusiveGateway id="GatewayIsDepositChoseen" name="Is deposit selected?">
       <bpmn:incoming>Flow_0vg22q7</bpmn:incoming>
@@ -97,7 +94,9 @@ print('The choosen deposit name is: ' + depositName);</bpmn:script>
     <bpmn:endEvent id="Event_0o1nbkt">
       <bpmn:incoming>Flow_1b269dc</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1b269dc" name="No" sourceRef="GatewayIsDepositChoseen" targetRef="Event_0o1nbkt" />
+    <bpmn:sequenceFlow id="Flow_1b269dc" name="No" sourceRef="GatewayIsDepositChoseen" targetRef="Event_0o1nbkt">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!execution.hasVariable("depositName") || depositName == null}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1satx0a" name="yes" sourceRef="GatewayIsDepositChoseen" targetRef="Activity_1fih2fc">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${execution.hasVariable("depositName") &amp;&amp; depositName != null}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
@@ -105,19 +104,21 @@ print('The choosen deposit name is: ' + depositName);</bpmn:script>
       <bpmn:incoming>Flow_1satx0a</bpmn:incoming>
       <bpmn:outgoing>Flow_01j2k0y</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:exclusiveGateway id="GatewayIsNewClient" name="Is it existing client?">
+    <bpmn:exclusiveGateway id="GatewayIsNewClient" name="Is it existing client?" default="Flow_1e2n8na">
       <bpmn:incoming>Flow_01j2k0y</bpmn:incoming>
       <bpmn:outgoing>Flow_1e2n8na</bpmn:outgoing>
       <bpmn:outgoing>Flow_1w2wqcf</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_01j2k0y" sourceRef="Activity_1fih2fc" targetRef="GatewayIsNewClient" />
     <bpmn:sequenceFlow id="Flow_1e2n8na" name="No" sourceRef="GatewayIsNewClient" targetRef="ClientFullValidationId" />
-    <bpmn:sequenceFlow id="Flow_1w2wqcf" name="Yes" sourceRef="GatewayIsNewClient" targetRef="Activity_1kgvohn" />
+    <bpmn:sequenceFlow id="Flow_1w2wqcf" name="Yes" sourceRef="GatewayIsNewClient" targetRef="ClientParticularValidationId">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${isExistingUser}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:serviceTask id="ClientFullValidationId" name="Perform full customer validation" camunda:delegateExpression="${clientFullValidationDelegate}">
       <bpmn:incoming>Flow_1e2n8na</bpmn:incoming>
       <bpmn:outgoing>Flow_08fk7si</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_1kgvohn">
+    <bpmn:serviceTask id="ClientParticularValidationId" name="Perform particularcustomer validation" camunda:delegateExpression="${clientParticularValidationDelegate}">
       <bpmn:incoming>Flow_1w2wqcf</bpmn:incoming>
       <bpmn:outgoing>Flow_0so4g26</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -125,22 +126,51 @@ print('The choosen deposit name is: ' + depositName);</bpmn:script>
     <bpmn:exclusiveGateway id="Gateway_1m54vua">
       <bpmn:incoming>Flow_08fk7si</bpmn:incoming>
       <bpmn:incoming>Flow_0so4g26</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ay1zfe</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0so4g26" sourceRef="Activity_1kgvohn" targetRef="Gateway_1m54vua" />
+    <bpmn:sequenceFlow id="Flow_0so4g26" sourceRef="ClientParticularValidationId" targetRef="Gateway_1m54vua" />
+    <bpmn:exclusiveGateway id="GatewaySuccessvalidationId" name="Is client successfully passed validation" default="Flow_0s7rexw">
+      <bpmn:incoming>Flow_0ay1zfe</bpmn:incoming>
+      <bpmn:outgoing>Flow_1p8ve7v</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0s7rexw</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0ay1zfe" sourceRef="Gateway_1m54vua" targetRef="GatewaySuccessvalidationId" />
+    <bpmn:scriptTask id="Activity_1k66yv9" name="Deposit opening process" scriptFormat="JavaScript">
+      <bpmn:incoming>Flow_1p8ve7v</bpmn:incoming>
+      <bpmn:outgoing>Flow_08ema3g</bpmn:outgoing>
+      <bpmn:script>print('The client has passed validation');</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:endEvent id="Event_1uw04yg">
+      <bpmn:incoming>Flow_08ema3g</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_08ema3g" sourceRef="Activity_1k66yv9" targetRef="Event_1uw04yg" />
+    <bpmn:sequenceFlow id="Flow_1p8ve7v" name="Yes" sourceRef="GatewaySuccessvalidationId" targetRef="Activity_1k66yv9">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${isValidUser}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:scriptTask id="Activity_0jhdcfi" name="Deposit opening process" scriptFormat="JavaScript">
+      <bpmn:incoming>Flow_0s7rexw</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ygfjzl</bpmn:outgoing>
+      <bpmn:script>print('The client has no passed validation');</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:endEvent id="Event_117ft5l">
+      <bpmn:incoming>Flow_1ygfjzl</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1ygfjzl" sourceRef="Activity_0jhdcfi" targetRef="Event_117ft5l" />
+    <bpmn:sequenceFlow id="Flow_0s7rexw" name="No" sourceRef="GatewaySuccessvalidationId" targetRef="Activity_0jhdcfi" />
   </bpmn:process>
   <bpmn:error id="Error_0gedzpw" name="SUDDEN_OPERATION_INTERRUPTION_ERROR" errorCode="SUDDEN_OPERATION_INTERRUPTION_ERROR" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Client">
       <bpmndi:BPMNShape id="Participant_1m3t5uk_di" bpmnElement="DepositOpeningId" isHorizontal="true">
-        <dc:Bounds x="155" y="82" width="1345" height="938" />
+        <dc:Bounds x="155" y="82" width="1653" height="938" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1vfx0za_di" bpmnElement="BankWorkerId" isHorizontal="true">
-        <dc:Bounds x="185" y="560" width="1315" height="460" />
+        <dc:Bounds x="185" y="560" width="1623" height="460" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0piipfw_di" bpmnElement="ClientId" isHorizontal="true">
-        <dc:Bounds x="185" y="82" width="1315" height="478" />
+        <dc:Bounds x="185" y="82" width="1623" height="478" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1f6invq_di" bpmnElement="PassaportProvidingId">
@@ -160,13 +190,6 @@ print('The choosen deposit name is: ' + depositName);</bpmn:script>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
         <dc:Bounds x="222" y="302" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1k66yv9_di" bpmnElement="Activity_1k66yv9">
-        <dc:Bounds x="1220" y="120" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1uw04yg_di" bpmnElement="Event_1uw04yg">
-        <dc:Bounds x="1432" y="142" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0xim0s8_di" bpmnElement="GatewayIsDepositChoseen" isMarkerVisible="true">
         <dc:Bounds x="835" y="295" width="50" height="50" />
@@ -191,11 +214,32 @@ print('The choosen deposit name is: ' + depositName);</bpmn:script>
         <dc:Bounds x="1070" y="690" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1kgvohn_di" bpmnElement="Activity_1kgvohn">
+      <bpmndi:BPMNShape id="Activity_1kgvohn_di" bpmnElement="ClientParticularValidationId">
         <dc:Bounds x="1070" y="890" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1m54vua_di" bpmnElement="Gateway_1m54vua" isMarkerVisible="true">
         <dc:Bounds x="1225" y="805" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0xoibn0_di" bpmnElement="GatewaySuccessvalidationId" isMarkerVisible="true">
+        <dc:Bounds x="1335" y="805" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1319" y="760" width="84" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1k66yv9_di" bpmnElement="Activity_1k66yv9">
+        <dc:Bounds x="1460" y="790" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1uw04yg_di" bpmnElement="Event_1uw04yg">
+        <dc:Bounds x="1672" y="812" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0ulr68d" bpmnElement="Activity_0jhdcfi">
+        <dc:Bounds x="1310" y="890" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_117ft5l_di" bpmnElement="Event_117ft5l">
+        <dc:Bounds x="1462" y="912" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1geo627_di" bpmnElement="ErrorPassportShouldBePresentHandleId">
         <dc:Bounds x="382" y="262" width="36" height="36" />
@@ -219,10 +263,6 @@ print('The choosen deposit name is: ' + depositName);</bpmn:script>
         <di:waypoint x="400" y="840" />
         <di:waypoint x="670" y="840" />
         <di:waypoint x="670" y="360" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_08ema3g_di" bpmnElement="Flow_08ema3g">
-        <di:waypoint x="1320" y="160" />
-        <di:waypoint x="1432" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0vg22q7_di" bpmnElement="Flow_0vg22q7">
         <di:waypoint x="720" y="320" />
@@ -272,13 +312,43 @@ print('The choosen deposit name is: ' + depositName);</bpmn:script>
         <di:waypoint x="1250" y="930" />
         <di:waypoint x="1250" y="855" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ay1zfe_di" bpmnElement="Flow_0ay1zfe">
+        <di:waypoint x="1275" y="830" />
+        <di:waypoint x="1335" y="830" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08ema3g_di" bpmnElement="Flow_08ema3g">
+        <di:waypoint x="1560" y="830" />
+        <di:waypoint x="1672" y="830" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1p8ve7v_di" bpmnElement="Flow_1p8ve7v">
+        <di:waypoint x="1385" y="830" />
+        <di:waypoint x="1460" y="830" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1413" y="812" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ygfjzl_di" bpmnElement="Flow_1ygfjzl">
+        <di:waypoint x="1410" y="930" />
+        <di:waypoint x="1462" y="930" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0s7rexw_di" bpmnElement="Flow_0s7rexw">
+        <di:waypoint x="1360" y="855" />
+        <di:waypoint x="1360" y="890" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1369" y="870" width="13" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Association_1rkgfbm_di" bpmnElement="Association_1rkgfbm">
         <di:waypoint x="819" y="870" />
         <di:waypoint x="805" y="883" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Association_03ei8qp_di" bpmnElement="Association_03ei8qp">
         <di:waypoint x="1090" y="690" />
-        <di:waypoint x="1074" y="670" />
+        <di:waypoint x="1082" y="680" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_18a14mj_di" bpmnElement="Association_18a14mj">
+        <di:waypoint x="1070" y="937" />
+        <di:waypoint x="1030" y="942" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_1dwr8fx_di" bpmnElement="TextAnnotation_1dwr8fx">
         <dc:Bounds x="220" y="150" width="99.99156545209178" height="98.51551956815115" />
@@ -309,7 +379,11 @@ print('The choosen deposit name is: ' + depositName);</bpmn:script>
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_0x112s8_di" bpmnElement="TextAnnotation_0x112s8">
-        <dc:Bounds x="960" y="570" width="130" height="100" />
+        <dc:Bounds x="960" y="570" width="170" height="110" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_19iz2rn_di" bpmnElement="TextAnnotation_19iz2rn">
+        <dc:Bounds x="870" y="941" width="160" height="79" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
