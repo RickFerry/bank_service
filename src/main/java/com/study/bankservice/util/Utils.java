@@ -91,14 +91,6 @@ public class Utils {
     public static List<Passport> getPassports() {
         return List.of(
                 Passport.builder()
-                        .identicalNumber("ID123456")
-                        .name(JOHN_DOE)
-                        .surname("Doe")
-                        .address(MAIN_ST)
-                        .birthDate(parse(DATE_VALID_TO))
-                        .validFrom(parse("2015-01-01"))
-                        .validTo(parse("2025-01-01")).build(),
-                Passport.builder()
                         .identicalNumber("ID654321")
                         .name("Jane Smith")
                         .surname(SMITH)
@@ -113,7 +105,15 @@ public class Utils {
                         .address("789 Oak St")
                         .birthDate(parse("1978-09-30"))
                         .validFrom(parse("2017-03-15"))
-                        .validTo(parse("2027-03-15")).build()
+                        .validTo(parse("2027-03-15")).build(),
+                Passport.builder()
+                        .identicalNumber("AB1234567")
+                        .name(JOHN_DOE)
+                        .surname("Doe")
+                        .address(MAIN_ST)
+                        .birthDate(parse(BIRTH_AND_VALID_FROM))
+                        .validFrom(parse(BIRTH_AND_VALID_FROM))
+                        .validTo(parse(DATE_VALID_TO)).build()
         );
     }
 
