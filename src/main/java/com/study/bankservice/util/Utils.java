@@ -72,22 +72,6 @@ public class Utils {
                 .build());
     }
 
-    public static boolean isClient(List<Passport> passports, Passport passport) {
-        return passports.stream().anyMatch(p ->
-                p.getIdenticalNumber().equals(passport.getIdenticalNumber())
-                        && p.getName().equals(passport.getName())
-                        && p.getSurname().equals(passport.getSurname())
-                        && p.getBirthDate().equals(passport.getBirthDate()));
-    }
-
-    public static boolean isPoliceOrBlackList(Client client, List<Client> badClientList) {
-        return badClientList.stream().anyMatch(c ->
-                c.getName().equals(client.getName())
-                        && c.getSurname().equals(client.getSurname())
-                        && c.getBirthDate().equals(client.getBirthDate())
-                        && c.getPassport().getIdenticalNumber().equals(client.getPassport().getIdenticalNumber()));
-    }
-
     public static List<Passport> getPassports() {
         return List.of(
                 Passport.builder()
@@ -153,5 +137,21 @@ public class Utils {
                         .termInMonths(18)
                         .build()
         );
+    }
+
+    public static boolean isClient(List<Passport> passports, Passport passport) {
+        return passports.stream().anyMatch(p ->
+                p.getIdenticalNumber().equals(passport.getIdenticalNumber())
+                        && p.getName().equals(passport.getName())
+                        && p.getSurname().equals(passport.getSurname())
+                        && p.getBirthDate().equals(passport.getBirthDate()));
+    }
+
+    public static boolean isPoliceOrBlackList(Client client, List<Client> badClientList) {
+        return badClientList.stream().anyMatch(c ->
+                c.getName().equals(client.getName())
+                        && c.getSurname().equals(client.getSurname())
+                        && c.getBirthDate().equals(client.getBirthDate())
+                        && c.getPassport().getIdenticalNumber().equals(client.getPassport().getIdenticalNumber()));
     }
 }
