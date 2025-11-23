@@ -34,7 +34,7 @@
     </bpmn:textAnnotation>
     <bpmn:association id="Association_18a14mj" associationDirection="None" sourceRef="ClientParticularValidationId" targetRef="TextAnnotation_19iz2rn" />
   </bpmn:collaboration>
-  <bpmn:process id="DepositOpening" name="DepositOpening" isExecutable="true" camunda:historyTimeToLive="90">
+  <bpmn:process id="OpeningDeposit" name="DepositOpening" isExecutable="true" camunda:historyTimeToLive="90">
     <bpmn:laneSet id="LaneSet_1yi3fpc">
       <bpmn:lane id="ClientId" name="Client">
         <bpmn:flowNodeRef>PassaportProvidingId</bpmn:flowNodeRef>
@@ -95,7 +95,7 @@
       <bpmn:incoming>Flow_1b269dc</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1b269dc" name="No" sourceRef="GatewayIsDepositChoseen" targetRef="Event_0o1nbkt">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!execution.hasVariable("depositName") || depositName == null || depositName == ""}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!execution.hasVariable("depositName") || depositName == null}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1satx0a" name="yes" sourceRef="GatewayIsDepositChoseen" targetRef="Activity_1fih2fc">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${execution.hasVariable("depositName") &amp;&amp; depositName != null}</bpmn:conditionExpression>
@@ -338,6 +338,18 @@
           <dc:Bounds x="1369" y="870" width="13" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1rkgfbm_di" bpmnElement="Association_1rkgfbm">
+        <di:waypoint x="819" y="870" />
+        <di:waypoint x="805" y="883" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_03ei8qp_di" bpmnElement="Association_03ei8qp">
+        <di:waypoint x="1090" y="690" />
+        <di:waypoint x="1082" y="680" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_18a14mj_di" bpmnElement="Association_18a14mj">
+        <di:waypoint x="1070" y="937" />
+        <di:waypoint x="1030" y="942" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_1dwr8fx_di" bpmnElement="TextAnnotation_1dwr8fx">
         <dc:Bounds x="220" y="150" width="99.99156545209178" height="98.51551956815115" />
         <bpmndi:BPMNLabel />
@@ -348,18 +360,6 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_0jng4gd_di" bpmnElement="TextAnnotation_0jng4gd">
         <dc:Bounds x="560" y="157" width="99.99156545209178" height="83.67071524966262" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_1ac23f4_di" bpmnElement="TextAnnotation_1ac23f4">
-        <dc:Bounds x="740" y="883" width="120" height="97" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0x112s8_di" bpmnElement="TextAnnotation_0x112s8">
-        <dc:Bounds x="960" y="570" width="170" height="110" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_19iz2rn_di" bpmnElement="TextAnnotation_19iz2rn">
-        <dc:Bounds x="870" y="941" width="160" height="79" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_1mkl1zt_di" bpmnElement="Association_1mkl1zt">
@@ -374,18 +374,18 @@
         <di:waypoint x="654" y="280" />
         <di:waypoint x="638" y="241" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1rkgfbm_di" bpmnElement="Association_1rkgfbm">
-        <di:waypoint x="819" y="870" />
-        <di:waypoint x="805" y="883" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_03ei8qp_di" bpmnElement="Association_03ei8qp">
-        <di:waypoint x="1090" y="690" />
-        <di:waypoint x="1082" y="680" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_18a14mj_di" bpmnElement="Association_18a14mj">
-        <di:waypoint x="1070" y="937" />
-        <di:waypoint x="1030" y="942" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1ac23f4_di" bpmnElement="TextAnnotation_1ac23f4">
+        <dc:Bounds x="740" y="883" width="120" height="97" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0x112s8_di" bpmnElement="TextAnnotation_0x112s8">
+        <dc:Bounds x="960" y="570" width="170" height="110" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_19iz2rn_di" bpmnElement="TextAnnotation_19iz2rn">
+        <dc:Bounds x="870" y="941" width="160" height="79" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
