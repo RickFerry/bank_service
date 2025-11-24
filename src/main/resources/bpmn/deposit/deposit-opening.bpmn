@@ -34,6 +34,14 @@
     <bpmn:association id="Association_18a14mj" associationDirection="None" sourceRef="ClientParticularValidationId" targetRef="TextAnnotation_19iz2rn" />
     <bpmn:association id="Association_1mkl1zt" associationDirection="None" sourceRef="PassaportProvidingId" targetRef="TextAnnotation_1dwr8fx" />
     <bpmn:association id="Association_1iaz4f9" associationDirection="None" sourceRef="DepositChoosingId" targetRef="TextAnnotation_0jng4gd" />
+    <bpmn:textAnnotation id="TextAnnotation_13elzmh">
+      <bpmn:text>Notify client about failure to go home.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_16r0ulg" associationDirection="None" sourceRef="SuddenOperationInterruptionErrorId" targetRef="TextAnnotation_13elzmh" />
+    <bpmn:textAnnotation id="TextAnnotation_15q7ndf">
+      <bpmn:text>In case client is criminal, bank worker call to the police station</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0dmn4i2" associationDirection="None" sourceRef="CallToPoliceId" targetRef="TextAnnotation_15q7ndf" />
   </bpmn:collaboration>
   <bpmn:process id="Process_0e9ae22" isExecutable="true">
     <bpmn:laneSet id="LaneSet_014yw4k">
@@ -47,8 +55,10 @@
         <bpmn:flowNodeRef>GatewaySuccessvalidationId</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1k66yv9</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1uw04yg</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_0jhdcfi</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_117ft5l</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GatewayIsClientCriminalId</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>SuddenOperationInterruptionErrorId</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>CallToPoliceId</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ClientIsCriminalErrorId</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="ClientId" name="Client">
         <bpmn:flowNodeRef>PassaportProvidingId</bpmn:flowNodeRef>
@@ -108,10 +118,10 @@
       <bpmn:incoming>Flow_0so4g26</bpmn:incoming>
       <bpmn:outgoing>Flow_0ay1zfe</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:exclusiveGateway id="GatewaySuccessvalidationId" name="Is client successfully passed validation?" default="Flow_0s7rexw">
+    <bpmn:exclusiveGateway id="GatewaySuccessvalidationId" name="Is client successfully passed validation?" default="Flow_0901ed9">
       <bpmn:incoming>Flow_0ay1zfe</bpmn:incoming>
       <bpmn:outgoing>Flow_1p8ve7v</bpmn:outgoing>
-      <bpmn:outgoing>Flow_0s7rexw</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0901ed9</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:scriptTask id="Activity_1k66yv9" name="Deposit opening process" scriptFormat="JavaScript">
       <bpmn:incoming>Flow_1p8ve7v</bpmn:incoming>
@@ -120,14 +130,6 @@
     </bpmn:scriptTask>
     <bpmn:endEvent id="Event_1uw04yg">
       <bpmn:incoming>Flow_08ema3g</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:scriptTask id="Activity_0jhdcfi" name="Deposit opening process" scriptFormat="JavaScript">
-      <bpmn:incoming>Flow_0s7rexw</bpmn:incoming>
-      <bpmn:outgoing>Flow_1ygfjzl</bpmn:outgoing>
-      <bpmn:script>print('The client has no passed validation');</bpmn:script>
-    </bpmn:scriptTask>
-    <bpmn:endEvent id="Event_117ft5l">
-      <bpmn:incoming>Flow_1ygfjzl</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:boundaryEvent id="ErrorPassportShouldBePresentHandleId" name="Error passport should be present handle" attachedToRef="PassaportProvidingId">
       <bpmn:outgoing>Flow_0v2kx59</bpmn:outgoing>
@@ -155,22 +157,46 @@
     <bpmn:sequenceFlow id="Flow_1p8ve7v" name="Yes" sourceRef="GatewaySuccessvalidationId" targetRef="Activity_1k66yv9">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${isValidUser}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_0s7rexw" name="No" sourceRef="GatewaySuccessvalidationId" targetRef="Activity_0jhdcfi" />
     <bpmn:sequenceFlow id="Flow_08ema3g" sourceRef="Activity_1k66yv9" targetRef="Event_1uw04yg" />
-    <bpmn:sequenceFlow id="Flow_1ygfjzl" sourceRef="Activity_0jhdcfi" targetRef="Event_117ft5l" />
+    <bpmn:sequenceFlow id="Flow_0901ed9" name="No" sourceRef="GatewaySuccessvalidationId" targetRef="GatewayIsClientCriminalId" />
+    <bpmn:exclusiveGateway id="GatewayIsClientCriminalId" name="Is client criminal?">
+      <bpmn:incoming>Flow_0901ed9</bpmn:incoming>
+      <bpmn:outgoing>Flow_1qz7mv0</bpmn:outgoing>
+      <bpmn:outgoing>Flow_11wqyba</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1qz7mv0" name="No" sourceRef="GatewayIsClientCriminalId" targetRef="SuddenOperationInterruptionErrorId">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!isCriminal}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="SuddenOperationInterruptionErrorId" name="Sudden operation interruption error">
+      <bpmn:incoming>Flow_1qz7mv0</bpmn:incoming>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_02xrk4z" errorRef="Error_0gedzpw" />
+    </bpmn:endEvent>
+    <bpmn:scriptTask id="CallToPoliceId" name="Call to police" scriptFormat="JavaScript" camunda:resource="script/call-to-police-script.js">
+      <bpmn:incoming>Flow_11wqyba</bpmn:incoming>
+      <bpmn:outgoing>Flow_1236wtl</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_11wqyba" name="Yes" sourceRef="GatewayIsClientCriminalId" targetRef="CallToPoliceId">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${isCriminal}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="ClientIsCriminalErrorId" name="Client is criminal error">
+      <bpmn:incoming>Flow_1236wtl</bpmn:incoming>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0zev00c" errorRef="Error_0c5za5t" />
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1236wtl" sourceRef="CallToPoliceId" targetRef="ClientIsCriminalErrorId" />
   </bpmn:process>
+  <bpmn:error id="Error_0c5za5t" name="CLIENT_IS_CRIMINAL_ERROR" errorCode="CLIENT_IS_CRIMINAL_ERROR" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1yxi3w8">
       <bpmndi:BPMNShape id="Participant_1imo4ik_di" bpmnElement="DepositOpeningId" isHorizontal="true">
-        <dc:Bounds x="159" y="80" width="1560" height="920" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_0kk3bf3_di" bpmnElement="BankWorkerId" isHorizontal="true">
-        <dc:Bounds x="189" y="530" width="1530" height="470" />
+        <dc:Bounds x="159" y="80" width="1560" height="950" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_02f5fqg_di" bpmnElement="ClientId" isHorizontal="true">
         <dc:Bounds x="189" y="80" width="1530" height="450" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0kk3bf3_di" bpmnElement="BankWorkerId" isHorizontal="true">
+        <dc:Bounds x="189" y="530" width="1530" height="500" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1f6invq_di" bpmnElement="PassaportProvidingId">
@@ -227,7 +253,7 @@
       <bpmndi:BPMNShape id="Gateway_0xoibn0_di" bpmnElement="GatewaySuccessvalidationId" isMarkerVisible="true">
         <dc:Bounds x="1325" y="755" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1321" y="703" width="60" height="53" />
+          <dc:Bounds x="1320" y="703" width="62" height="53" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1k66yv9_di" bpmnElement="Activity_1k66yv9">
@@ -237,12 +263,27 @@
       <bpmndi:BPMNShape id="Event_1uw04yg_di" bpmnElement="Event_1uw04yg">
         <dc:Bounds x="1662" y="762" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_0ulr68d" bpmnElement="Activity_0jhdcfi">
-        <dc:Bounds x="1300" y="840" width="100" height="80" />
+      <bpmndi:BPMNShape id="Gateway_0bg93pu_di" bpmnElement="GatewayIsClientCriminalId" isMarkerVisible="true">
+        <dc:Bounds x="1325" y="855" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1249" y="893" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_101bh7c_di" bpmnElement="SuddenOperationInterruptionErrorId">
+        <dc:Bounds x="1332" y="942" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1310" y="985" width="85" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1af5gf3_di" bpmnElement="CallToPoliceId">
+        <dc:Bounds x="1430" y="840" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_117ft5l_di" bpmnElement="Event_117ft5l">
-        <dc:Bounds x="1452" y="862" width="36" height="36" />
+      <bpmndi:BPMNShape id="Event_0b1v8bc_di" bpmnElement="ClientIsCriminalErrorId">
+        <dc:Bounds x="1592" y="862" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1602" y="836" width="76" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1geo627_di" bpmnElement="ErrorPassportShouldBePresentHandleId">
         <dc:Bounds x="372" y="212" width="36" height="36" />
@@ -326,31 +367,53 @@
           <dc:Bounds x="1403" y="762" width="19" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0s7rexw_di" bpmnElement="Flow_0s7rexw">
-        <di:waypoint x="1350" y="805" />
-        <di:waypoint x="1350" y="840" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1358" y="820" width="15" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_08ema3g_di" bpmnElement="Flow_08ema3g">
         <di:waypoint x="1550" y="780" />
         <di:waypoint x="1662" y="780" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1ygfjzl_di" bpmnElement="Flow_1ygfjzl">
-        <di:waypoint x="1400" y="880" />
-        <di:waypoint x="1452" y="880" />
+      <bpmndi:BPMNEdge id="Flow_0901ed9_di" bpmnElement="Flow_0901ed9">
+        <di:waypoint x="1350" y="805" />
+        <di:waypoint x="1350" y="855" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1359" y="827" width="13" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1mkl1zt_di" bpmnElement="Association_1mkl1zt">
-        <di:waypoint x="290" y="264" />
-        <di:waypoint x="212" y="199" />
+      <bpmndi:BPMNEdge id="Flow_1qz7mv0_di" bpmnElement="Flow_1qz7mv0">
+        <di:waypoint x="1350" y="905" />
+        <di:waypoint x="1350" y="942" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1359" y="921" width="13" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1iaz4f9_di" bpmnElement="Association_1iaz4f9">
-        <di:waypoint x="616" y="231" />
-        <di:waypoint x="600" y="150" />
+      <bpmndi:BPMNEdge id="Flow_11wqyba_di" bpmnElement="Flow_11wqyba">
+        <di:waypoint x="1375" y="880" />
+        <di:waypoint x="1430" y="880" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1393" y="862" width="19" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1236wtl_di" bpmnElement="Flow_1236wtl">
+        <di:waypoint x="1530" y="880" />
+        <di:waypoint x="1592" y="880" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0dmn4i2_di" bpmnElement="Association_0dmn4i2">
+        <di:waypoint x="1530" y="905" />
+        <di:waypoint x="1560" y="920" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_16r0ulg_di" bpmnElement="Association_16r0ulg">
+        <di:waypoint x="1333" y="955" />
+        <di:waypoint x="1310" y="949" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1dwr8fx_di" bpmnElement="TextAnnotation_1dwr8fx">
+        <dc:Bounds x="200" y="100" width="100" height="99" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_1n3qubz_di" bpmnElement="TextAnnotation_1n3qubz">
         <dc:Bounds x="210" y="860" width="100" height="99" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0jng4gd_di" bpmnElement="TextAnnotation_0jng4gd">
+        <dc:Bounds x="500" y="108" width="100" height="84" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_1ac23f4_di" bpmnElement="TextAnnotation_1ac23f4">
@@ -373,20 +436,28 @@
         <di:waypoint x="809" y="820" />
         <di:waypoint x="795" y="833" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_18a14mj_di" bpmnElement="Association_18a14mj">
-        <di:waypoint x="1060" y="887" />
-        <di:waypoint x="1020" y="892" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Association_03ei8qp_di" bpmnElement="Association_03ei8qp">
         <di:waypoint x="1064" y="642" />
         <di:waypoint x="1050" y="644" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="TextAnnotation_1dwr8fx_di" bpmnElement="TextAnnotation_1dwr8fx">
-        <dc:Bounds x="200" y="100" width="100" height="99" />
+      <bpmndi:BPMNEdge id="Association_18a14mj_di" bpmnElement="Association_18a14mj">
+        <di:waypoint x="1060" y="887" />
+        <di:waypoint x="1020" y="892" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1mkl1zt_di" bpmnElement="Association_1mkl1zt">
+        <di:waypoint x="290" y="264" />
+        <di:waypoint x="212" y="199" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1iaz4f9_di" bpmnElement="Association_1iaz4f9">
+        <di:waypoint x="616" y="231" />
+        <di:waypoint x="600" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_15q7ndf_di" bpmnElement="TextAnnotation_15q7ndf">
+        <dc:Bounds x="1540" y="920" width="99.99274099883856" height="83.62369337979094" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0jng4gd_di" bpmnElement="TextAnnotation_0jng4gd">
-        <dc:Bounds x="500" y="108" width="100" height="84" />
+      <bpmndi:BPMNShape id="TextAnnotation_13elzmh_di" bpmnElement="TextAnnotation_13elzmh">
+        <dc:Bounds x="1210" y="920" width="99.99274099883856" height="54.587688734030195" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
