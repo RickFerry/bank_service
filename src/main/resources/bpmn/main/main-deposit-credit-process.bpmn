@@ -83,6 +83,21 @@
       <bpmn:incoming>Flow_0wpz8qj</bpmn:incoming>
       <bpmn:outgoing>Flow_0jlqsgp</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:subProcess id="Activity_1rjtntp" name="Run out of the bank since client is criminal and dosen&#39;t want to be caught bythe police" triggeredByEvent="true">
+      <bpmn:startEvent id="ClientisCriminalStartErrorId" name="Clientis criminal start error">
+        <bpmn:outgoing>Flow_1i01lds</bpmn:outgoing>
+        <bpmn:errorEventDefinition id="ErrorEventDefinition_1h8dyig" errorRef="Error_0admi1y" camunda:errorCodeVariable="CLIENT_IS_CRIMINAL_ERROR" />
+      </bpmn:startEvent>
+      <bpmn:scriptTask id="RunOutOfTheBankId" name="Run out of the bank" scriptFormat="JavaScript" camunda:resource="script/run-out-of-the-bank-script.js">
+        <bpmn:incoming>Flow_1i01lds</bpmn:incoming>
+        <bpmn:outgoing>Flow_1juzdzh</bpmn:outgoing>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_1i01lds" sourceRef="ClientisCriminalStartErrorId" targetRef="RunOutOfTheBankId" />
+      <bpmn:endEvent id="ClientIsCriminalEndEventId" name="Client is criminal end Event">
+        <bpmn:incoming>Flow_1juzdzh</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_1juzdzh" sourceRef="RunOutOfTheBankId" targetRef="ClientIsCriminalEndEventId" />
+    </bpmn:subProcess>
     <bpmn:textAnnotation id="TextAnnotation_0lbbssc">
       <bpmn:text>Camunda forms - Choose transport to the bank (walk or taxi?)</bpmn:text>
     </bpmn:textAnnotation>
@@ -108,6 +123,7 @@
     </bpmn:textAnnotation>
     <bpmn:association id="Association_0t7ylhz" associationDirection="None" sourceRef="ActivityRoadToHomeId" targetRef="TextAnnotation_0rd0k46" />
   </bpmn:process>
+  <bpmn:error id="Error_0admi1y" name="CLIENT_IS_CRIMINAL_ERROR" errorCode="CLIENT_IS_CRIMINAL_ERROR" camunda:errorMessage="CLIENT_IS_CRIMINAL_ERROR" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="MainDepositCreditProcess">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -157,6 +173,34 @@
       <bpmndi:BPMNShape id="Activity_016xu7h_di" bpmnElement="GetTicketInQueueMachineId" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
         <dc:Bounds x="790" y="327" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0tgfeix_di" bpmnElement="Activity_1rjtntp" isExpanded="true">
+        <dc:Bounds x="1015" y="720" width="350" height="200" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1y4u6aw_di" bpmnElement="ClientisCriminalStartErrorId">
+        <dc:Bounds x="1045" y="802" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1028" y="845" width="73" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_08mxi0b_di" bpmnElement="RunOutOfTheBankId">
+        <dc:Bounds x="1140" y="780" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_05tpba8_di" bpmnElement="ClientIsCriminalEndEventId">
+        <dc:Bounds x="1302" y="802" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1283" y="845" width="76" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1i01lds_di" bpmnElement="Flow_1i01lds">
+        <di:waypoint x="1081" y="820" />
+        <di:waypoint x="1140" y="820" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1juzdzh_di" bpmnElement="Flow_1juzdzh">
+        <di:waypoint x="1240" y="820" />
+        <di:waypoint x="1302" y="820" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_0lbbssc_di" bpmnElement="TextAnnotation_0lbbssc">
         <dc:Bounds x="210" y="200" width="100" height="70" />
         <bpmndi:BPMNLabel />
