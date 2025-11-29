@@ -37,13 +37,13 @@
     <bpmn:textAnnotation id="TextAnnotation_13elzmh">
       <bpmn:text>Notify client about failure to go home.</bpmn:text>
     </bpmn:textAnnotation>
-    <bpmn:association id="Association_16r0ulg" associationDirection="None" sourceRef="SuddenOperationInterruptionErrorId" targetRef="TextAnnotation_13elzmh" />
     <bpmn:textAnnotation id="TextAnnotation_15q7ndf">
       <bpmn:text>In case client is criminal, bank worker call to the police station</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_0dmn4i2" associationDirection="None" sourceRef="CallToPoliceId" targetRef="TextAnnotation_15q7ndf" />
+    <bpmn:association id="Association_16r0ulg" associationDirection="None" sourceRef="SuddenOperationInterruptionErrorId" targetRef="TextAnnotation_13elzmh" />
   </bpmn:collaboration>
-  <bpmn:process id="Process_0e9ae22" isExecutable="true">
+  <bpmn:process id="DepositOpening" name="Deposit Opening" isExecutable="true">
     <bpmn:laneSet id="LaneSet_014yw4k">
       <bpmn:lane id="BankWorkerId" name="Bank Worker">
         <bpmn:flowNodeRef>DepositListProvidingId</bpmn:flowNodeRef>
@@ -56,9 +56,9 @@
         <bpmn:flowNodeRef>Activity_1k66yv9</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1uw04yg</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GatewayIsClientCriminalId</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>SuddenOperationInterruptionErrorId</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>CallToPoliceId</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>ClientIsCriminalErrorId</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>SuddenOperationInterruptionErrorId</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="ClientId" name="Client">
         <bpmn:flowNodeRef>PassaportProvidingId</bpmn:flowNodeRef>
@@ -167,10 +167,6 @@
     <bpmn:sequenceFlow id="Flow_1qz7mv0" name="No" sourceRef="GatewayIsClientCriminalId" targetRef="SuddenOperationInterruptionErrorId">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!isCriminal}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:endEvent id="SuddenOperationInterruptionErrorId" name="Sudden operation interruption error">
-      <bpmn:incoming>Flow_1qz7mv0</bpmn:incoming>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_02xrk4z" errorRef="Error_0gedzpw" />
-    </bpmn:endEvent>
     <bpmn:scriptTask id="CallToPoliceId" name="Call to police" scriptFormat="JavaScript" camunda:resource="script/call-to-police-script.js">
       <bpmn:incoming>Flow_11wqyba</bpmn:incoming>
       <bpmn:outgoing>Flow_1236wtl</bpmn:outgoing>
@@ -183,6 +179,10 @@
       <bpmn:errorEventDefinition id="ErrorEventDefinition_0zev00c" errorRef="Error_0c5za5t" />
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1236wtl" sourceRef="CallToPoliceId" targetRef="ClientIsCriminalErrorId" />
+    <bpmn:endEvent id="SuddenOperationInterruptionErrorId" name="Sudden operation interruption error">
+      <bpmn:incoming>Flow_1qz7mv0</bpmn:incoming>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_02xrk4z" errorRef="Error_0gedzpw" />
+    </bpmn:endEvent>
   </bpmn:process>
   <bpmn:error id="Error_0c5za5t" name="CLIENT_IS_CRIMINAL_ERROR" errorCode="CLIENT_IS_CRIMINAL_ERROR" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -269,12 +269,6 @@
           <dc:Bounds x="1249" y="893" width="81" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_101bh7c_di" bpmnElement="SuddenOperationInterruptionErrorId">
-        <dc:Bounds x="1332" y="942" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1310" y="985" width="85" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1af5gf3_di" bpmnElement="CallToPoliceId">
         <dc:Bounds x="1430" y="840" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -283,6 +277,12 @@
         <dc:Bounds x="1592" y="862" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1602" y="836" width="76" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_101bh7c_di" bpmnElement="SuddenOperationInterruptionErrorId">
+        <dc:Bounds x="1332" y="962" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1309" y="1005" width="87" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1geo627_di" bpmnElement="ErrorPassportShouldBePresentHandleId">
@@ -380,9 +380,9 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1qz7mv0_di" bpmnElement="Flow_1qz7mv0">
         <di:waypoint x="1350" y="905" />
-        <di:waypoint x="1350" y="942" />
+        <di:waypoint x="1350" y="962" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1359" y="921" width="13" height="14" />
+          <dc:Bounds x="1358" y="933" width="15" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_11wqyba_di" bpmnElement="Flow_11wqyba">
@@ -396,13 +396,9 @@
         <di:waypoint x="1530" y="880" />
         <di:waypoint x="1592" y="880" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_0dmn4i2_di" bpmnElement="Association_0dmn4i2">
-        <di:waypoint x="1530" y="905" />
-        <di:waypoint x="1560" y="920" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Association_16r0ulg_di" bpmnElement="Association_16r0ulg">
-        <di:waypoint x="1333" y="955" />
-        <di:waypoint x="1310" y="949" />
+        <di:waypoint x="1333" y="974" />
+        <di:waypoint x="1310" y="966" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_1dwr8fx_di" bpmnElement="TextAnnotation_1dwr8fx">
         <dc:Bounds x="200" y="100" width="100" height="99" />
@@ -426,6 +422,10 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_19iz2rn_di" bpmnElement="TextAnnotation_19iz2rn">
         <dc:Bounds x="860" y="891" width="160" height="68" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_15q7ndf_di" bpmnElement="TextAnnotation_15q7ndf">
+        <dc:Bounds x="1540" y="920" width="99.99274099883856" height="83.62369337979094" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_15rudtu_di" bpmnElement="Association_15rudtu">
@@ -452,12 +452,12 @@
         <di:waypoint x="616" y="231" />
         <di:waypoint x="600" y="150" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="TextAnnotation_15q7ndf_di" bpmnElement="TextAnnotation_15q7ndf">
-        <dc:Bounds x="1540" y="920" width="99.99274099883856" height="83.62369337979094" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0dmn4i2_di" bpmnElement="Association_0dmn4i2">
+        <di:waypoint x="1530" y="905" />
+        <di:waypoint x="1560" y="920" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_13elzmh_di" bpmnElement="TextAnnotation_13elzmh">
-        <dc:Bounds x="1210" y="920" width="99.99274099883856" height="54.587688734030195" />
+        <dc:Bounds x="1210" y="934" width="100" height="55" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>

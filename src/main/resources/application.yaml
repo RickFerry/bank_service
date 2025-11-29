@@ -13,8 +13,6 @@ camunda:
     generic-properties:
       properties:
         history-time-to-live: P1D
-    auto-deployment-enabled: true
-    deployment-resource-pattern: classpath*:/processes/*.bpmn
 
 logging:
   level:
