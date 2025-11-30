@@ -12,16 +12,41 @@
 3. Increase code sending count;</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_0bfvkwe" associationDirection="None" sourceRef="PrepareAndSendVerificationSmsId" targetRef="TextAnnotation_10kt0jc" />
+    <bpmn:textAnnotation id="TextAnnotation_0u5ct44">
+      <bpmn:text>1. Enter obtained sms code</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_054i72p" associationDirection="None" sourceRef="ProvideSmsValidationCodeId" targetRef="TextAnnotation_0u5ct44" />
+    <bpmn:textAnnotation id="TextAnnotation_1q7p0yr">
+      <bpmn:text>1. Check if obtained sms code is not null;
+2.Check if then are equal;
+3. If not equal, increase code error count;
+4. In case error count is more then appropriate throw an exception;</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_13fl13d" associationDirection="None" sourceRef="ValidationCodeFromSmsId" targetRef="TextAnnotation_1q7p0yr" />
+    <bpmn:textAnnotation id="TextAnnotation_0dvbwj9">
+      <bpmn:text>1. Send validation failed message</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0kza67h" associationDirection="None" sourceRef="SendFailedVerificationSmsId" targetRef="TextAnnotation_0dvbwj9" />
+    <bpmn:textAnnotation id="TextAnnotation_0p9er7p">
+      <bpmn:text>1. Send validation success message</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_12rp2hn" associationDirection="None" sourceRef="SendSuccessVerificationSmsId" targetRef="TextAnnotation_0p9er7p" />
   </bpmn:collaboration>
   <bpmn:process id="SMSVerification" name="SMSVerification" isExecutable="true">
     <bpmn:laneSet id="LaneSet_1lilbo4">
       <bpmn:lane id="Lane_1h0dq4l" name="Client">
         <bpmn:flowNodeRef>ObtainingSmsId</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ProvideSmsValidationCodeId</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>VerificationSmsErrorHandlingId</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_08cgfuh" name="Bank Worker">
-        <bpmn:flowNodeRef>PrepareAndSendVerificationSmsId</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>VerificationSmsStartId</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>PrepareAndSendVerificationSmsId</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ValidationCodeFromSmsId</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0dj6c43</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>SendSuccessVerificationSmsId</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ErrorNoMoreSmsValidationAttempts</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>SendFailedVerificationSmsId</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="VerificationSmsStartId" name="Verification Sms Start">
@@ -31,33 +56,67 @@
     <bpmn:serviceTask id="PrepareAndSendVerificationSmsId" name="Prepare and Send Verification Sms" camunda:delegateExpression="${prepareSmsDelegate}">
       <bpmn:incoming>Flow_0fmajic</bpmn:incoming>
       <bpmn:incoming>Flow_1gzh79k</bpmn:incoming>
+      <bpmn:incoming>Flow_04e4980</bpmn:incoming>
       <bpmn:outgoing>Flow_12wtczf</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_0fmajic" sourceRef="VerificationSmsStartId" targetRef="PrepareAndSendVerificationSmsId" />
     <bpmn:sequenceFlow id="Flow_12wtczf" sourceRef="PrepareAndSendVerificationSmsId" targetRef="ObtainingSmsId" />
     <bpmn:serviceTask id="ObtainingSmsId" name="Obtaining Sms" camunda:delegateExpression="${smsObtainingByClientDelegate}">
       <bpmn:incoming>Flow_12wtczf</bpmn:incoming>
+      <bpmn:outgoing>Flow_0k7effk</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:boundaryEvent id="VerificationSmsErrorHandlingId" name="Verification Sms Error Handling" attachedToRef="ObtainingSmsId">
       <bpmn:outgoing>Flow_1gzh79k</bpmn:outgoing>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_1j0nh40" errorRef="Error_0a4nvev" />
     </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="Flow_1gzh79k" sourceRef="VerificationSmsErrorHandlingId" targetRef="PrepareAndSendVerificationSmsId" />
+    <bpmn:userTask id="ProvideSmsValidationCodeId" name="Provide Sms Validation Code" camunda:formKey="camunda-forms:/form/provide-sms-validation-code.form">
+      <bpmn:incoming>Flow_0k7effk</bpmn:incoming>
+      <bpmn:outgoing>Flow_0jn3jiv</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0k7effk" sourceRef="ObtainingSmsId" targetRef="ProvideSmsValidationCodeId" />
+    <bpmn:sequenceFlow id="Flow_0jn3jiv" sourceRef="ProvideSmsValidationCodeId" targetRef="ValidationCodeFromSmsId" />
+    <bpmn:serviceTask id="ValidationCodeFromSmsId" name="Validation Code from Sms" camunda:delegateExpression="${smsValidationDelegate}">
+      <bpmn:incoming>Flow_0jn3jiv</bpmn:incoming>
+      <bpmn:outgoing>Flow_06j3i8h</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_0dj6c43" default="Flow_04e4980">
+      <bpmn:incoming>Flow_06j3i8h</bpmn:incoming>
+      <bpmn:outgoing>Flow_1611i4z</bpmn:outgoing>
+      <bpmn:outgoing>Flow_04e4980</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_06j3i8h" sourceRef="ValidationCodeFromSmsId" targetRef="Gateway_0dj6c43" />
+    <bpmn:endEvent id="SendSuccessVerificationSmsId" name="Send Success Verification Sms" camunda:asyncBefore="true">
+      <bpmn:incoming>Flow_1611i4z</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1ozaczq" camunda:delegateExpression="${sendSuccessVerificationSmsDelegate}" />
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1611i4z" name="Yes" sourceRef="Gateway_0dj6c43" targetRef="SendSuccessVerificationSmsId" />
+    <bpmn:sequenceFlow id="Flow_04e4980" name="No" sourceRef="Gateway_0dj6c43" targetRef="PrepareAndSendVerificationSmsId" />
+    <bpmn:boundaryEvent id="ErrorNoMoreSmsValidationAttempts" name="After Three Attempts Validation is Failed" attachedToRef="ValidationCodeFromSmsId">
+      <bpmn:outgoing>Flow_00tpngn</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1eyu13n" errorRef="Error_1m86gsl" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_00tpngn" sourceRef="ErrorNoMoreSmsValidationAttempts" targetRef="SendFailedVerificationSmsId" />
+    <bpmn:endEvent id="SendFailedVerificationSmsId" name="Send Failed Verification Sms" camunda:asyncBefore="true">
+      <bpmn:incoming>Flow_00tpngn</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0vg7ujp" camunda:delegateExpression="${sendFailedVerificationSms}" />
+    </bpmn:endEvent>
   </bpmn:process>
   <bpmn:message id="Message_1l6im3k" name="message_start_sms_verification" />
   <bpmn:error id="Error_0a4nvev" name="VERIFICATION_SMS_NOT_OBTAINED" errorCode="VERIFICATION_SMS_NOT_OBTAINED" />
+  <bpmn:error id="Error_1m86gsl" name="LIMIT_OF_VERIFICATION_SMS_ATTEMPTS_EXCEEDED" errorCode="LIMIT_OF_VERIFICATION_SMS_ATTEMPTS_EXCEEDED" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1xswax9">
       <bpmndi:BPMNShape id="Participant_0atl1ms_di" bpmnElement="SMSVerificationId" isHorizontal="true">
-        <dc:Bounds x="190" y="110" width="600" height="540" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_1h0dq4l_di" bpmnElement="Lane_1h0dq4l" isHorizontal="true">
-        <dc:Bounds x="220" y="110" width="570" height="260" />
+        <dc:Bounds x="190" y="110" width="708" height="540" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_08cgfuh_di" bpmnElement="Lane_08cgfuh" isHorizontal="true">
-        <dc:Bounds x="220" y="370" width="570" height="280" />
+        <dc:Bounds x="220" y="370" width="678" height="280" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1h0dq4l_di" bpmnElement="Lane_1h0dq4l" isHorizontal="true">
+        <dc:Bounds x="220" y="110" width="678" height="260" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0nsgevx_di" bpmnElement="VerificationSmsStartId">
@@ -73,6 +132,35 @@
       <bpmndi:BPMNShape id="Activity_1m5x2cn_di" bpmnElement="ObtainingSmsId">
         <dc:Bounds x="350" y="200" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1jv85wn_di" bpmnElement="ProvideSmsValidationCodeId">
+        <dc:Bounds x="500" y="200" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03fmauw_di" bpmnElement="ValidationCodeFromSmsId">
+        <dc:Bounds x="500" y="450" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0dj6c43_di" bpmnElement="Gateway_0dj6c43" isMarkerVisible="true">
+        <dc:Bounds x="655" y="465" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1no6pgl_di" bpmnElement="SendSuccessVerificationSmsId">
+        <dc:Bounds x="762" y="472" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="800" y="486" width="80" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0t03zch_di" bpmnElement="SendFailedVerificationSmsId">
+        <dc:Bounds x="672" y="392" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="685" y="426" width="80" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ab73t9_di" bpmnElement="ErrorNoMoreSmsValidationAttempts">
+        <dc:Bounds x="582" y="432" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="690" y="503" width="59" height="53" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1m43f3i_di" bpmnElement="VerificationSmsErrorHandlingId">
         <dc:Bounds x="332" y="182" width="36" height="36" />
@@ -94,13 +182,38 @@
         <di:waypoint x="312" y="420" />
         <di:waypoint x="353" y="454" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1f1q05x_di" bpmnElement="Association_1f1q05x">
-        <di:waypoint x="438" y="200" />
-        <di:waypoint x="462" y="175" />
+      <bpmndi:BPMNEdge id="Flow_0k7effk_di" bpmnElement="Flow_0k7effk">
+        <di:waypoint x="450" y="240" />
+        <di:waypoint x="500" y="240" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_0bfvkwe_di" bpmnElement="Association_0bfvkwe">
-        <di:waypoint x="375" y="530" />
-        <di:waypoint x="349" y="570" />
+      <bpmndi:BPMNEdge id="Flow_0jn3jiv_di" bpmnElement="Flow_0jn3jiv">
+        <di:waypoint x="550" y="280" />
+        <di:waypoint x="550" y="450" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06j3i8h_di" bpmnElement="Flow_06j3i8h">
+        <di:waypoint x="600" y="490" />
+        <di:waypoint x="655" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1611i4z_di" bpmnElement="Flow_1611i4z">
+        <di:waypoint x="705" y="490" />
+        <di:waypoint x="762" y="490" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="724" y="472" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04e4980_di" bpmnElement="Flow_04e4980">
+        <di:waypoint x="680" y="515" />
+        <di:waypoint x="680" y="570" />
+        <di:waypoint x="440" y="570" />
+        <di:waypoint x="440" y="530" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="553" y="552" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00tpngn_di" bpmnElement="Flow_00tpngn">
+        <di:waypoint x="600" y="432" />
+        <di:waypoint x="600" y="410" />
+        <di:waypoint x="672" y="410" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_1g6jx6b_di" bpmnElement="TextAnnotation_1g6jx6b">
         <dc:Bounds x="450" y="120" width="100" height="55" />
@@ -110,6 +223,46 @@
         <dc:Bounds x="290" y="570" width="140" height="70" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0u5ct44_di" bpmnElement="TextAnnotation_0u5ct44">
+        <dc:Bounds x="600" y="120" width="99.99156545209178" height="55.330634278002705" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1q7p0yr_di" bpmnElement="TextAnnotation_1q7p0yr">
+        <dc:Bounds x="600" y="280" width="250" height="90" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0dvbwj9_di" bpmnElement="TextAnnotation_0dvbwj9">
+        <dc:Bounds x="780" y="370" width="99.99156545209178" height="55.330634278002705" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0p9er7p_di" bpmnElement="TextAnnotation_0p9er7p">
+        <dc:Bounds x="790" y="530" width="140" height="40" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1f1q05x_di" bpmnElement="Association_1f1q05x">
+        <di:waypoint x="438" y="200" />
+        <di:waypoint x="462" y="175" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0bfvkwe_di" bpmnElement="Association_0bfvkwe">
+        <di:waypoint x="375" y="530" />
+        <di:waypoint x="349" y="570" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_054i72p_di" bpmnElement="Association_054i72p">
+        <di:waypoint x="588" y="200" />
+        <di:waypoint x="612" y="175" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_13fl13d_di" bpmnElement="Association_13fl13d">
+        <di:waypoint x="571" y="450" />
+        <di:waypoint x="612" y="370" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0kza67h_di" bpmnElement="Association_0kza67h">
+        <di:waypoint x="708" y="407" />
+        <di:waypoint x="780" y="394" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_12rp2hn_di" bpmnElement="Association_12rp2hn">
+        <di:waypoint x="793" y="502" />
+        <di:waypoint x="824" y="530" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

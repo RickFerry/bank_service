@@ -1,0 +1,51 @@
+{
+  "components": [
+    {
+      "text": "<h1><em>Please take a look your mobile phone</em><h1>\n<h2><em>Find the validation sms and put it into form field</em><h2>",
+      "type": "text",
+      "layout": {
+        "row": "Row_0pzz476",
+        "columns": null
+      },
+      "id": "Field_06o474w"
+    },
+    {
+      "label": "Your validation code from sms:",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_040w124",
+        "columns": 8
+      },
+      "id": "Field_1q6xobw",
+      "key": "textfield_fb2m8",
+      "appearance": {
+        "prefixAdorner": "{{sendMobileCode}}"
+      }
+    },
+    {
+      "label": "Tell your validation code to bank worker:",
+      "type": "number",
+      "layout": {
+        "row": "Row_0ywxv05",
+        "columns": 11
+      },
+      "id": "Field_19uiwsl",
+      "key": "number_5yj4os",
+      "description": "Obtained mobile code",
+      "validate": {
+        "required": true,
+        "min": "0",
+        "max": "999999"
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_18g8vte",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.41.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.24.0",
+  "schemaVersion": 19
+}
