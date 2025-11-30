@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1fdhzdj" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.41.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.24.0">
+  <bpmn:collaboration id="Collaboration_1xswax9">
+    <bpmn:participant id="SMSVerificationId" name="SMS Verification" processRef="SMSVerification" />
+    <bpmn:textAnnotation id="TextAnnotation_1g6jx6b">
+      <bpmn:text>1. Check is sms code obtained</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1f1q05x" associationDirection="None" sourceRef="ObtainingSmsId" targetRef="TextAnnotation_1g6jx6b" />
+    <bpmn:textAnnotation id="TextAnnotation_10kt0jc">
+      <bpmn:text>1. Prepare sms code;
+2. Send mobile code;
+3. Increase code sending count;</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0bfvkwe" associationDirection="None" sourceRef="PrepareAndSendVerificationSmsId" targetRef="TextAnnotation_10kt0jc" />
+  </bpmn:collaboration>
+  <bpmn:process id="SMSVerification" name="SMSVerification" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_1lilbo4">
+      <bpmn:lane id="Lane_1h0dq4l" name="Client">
+        <bpmn:flowNodeRef>ObtainingSmsId</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>VerificationSmsErrorHandlingId</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_08cgfuh" name="Bank Worker">
+        <bpmn:flowNodeRef>PrepareAndSendVerificationSmsId</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>VerificationSmsStartId</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="VerificationSmsStartId" name="Verification Sms Start">
+      <bpmn:outgoing>Flow_0fmajic</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1mvxoqq" messageRef="Message_1l6im3k" />
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="PrepareAndSendVerificationSmsId" name="Prepare and Send Verification Sms" camunda:delegateExpression="${prepareSmsDelegate}">
+      <bpmn:incoming>Flow_0fmajic</bpmn:incoming>
+      <bpmn:incoming>Flow_1gzh79k</bpmn:incoming>
+      <bpmn:outgoing>Flow_12wtczf</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0fmajic" sourceRef="VerificationSmsStartId" targetRef="PrepareAndSendVerificationSmsId" />
+    <bpmn:sequenceFlow id="Flow_12wtczf" sourceRef="PrepareAndSendVerificationSmsId" targetRef="ObtainingSmsId" />
+    <bpmn:serviceTask id="ObtainingSmsId" name="Obtaining Sms" camunda:delegateExpression="${smsObtainingByClientDelegate}">
+      <bpmn:incoming>Flow_12wtczf</bpmn:incoming>
+    </bpmn:serviceTask>
+    <bpmn:boundaryEvent id="VerificationSmsErrorHandlingId" name="Verification Sms Error Handling" attachedToRef="ObtainingSmsId">
+      <bpmn:outgoing>Flow_1gzh79k</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1j0nh40" errorRef="Error_0a4nvev" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1gzh79k" sourceRef="VerificationSmsErrorHandlingId" targetRef="PrepareAndSendVerificationSmsId" />
+  </bpmn:process>
+  <bpmn:message id="Message_1l6im3k" name="message_start_sms_verification" />
+  <bpmn:error id="Error_0a4nvev" name="VERIFICATION_SMS_NOT_OBTAINED" errorCode="VERIFICATION_SMS_NOT_OBTAINED" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1xswax9">
+      <bpmndi:BPMNShape id="Participant_0atl1ms_di" bpmnElement="SMSVerificationId" isHorizontal="true">
+        <dc:Bounds x="190" y="110" width="600" height="540" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1h0dq4l_di" bpmnElement="Lane_1h0dq4l" isHorizontal="true">
+        <dc:Bounds x="220" y="110" width="570" height="260" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_08cgfuh_di" bpmnElement="Lane_08cgfuh" isHorizontal="true">
+        <dc:Bounds x="220" y="370" width="570" height="280" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0nsgevx_di" bpmnElement="VerificationSmsStartId">
+        <dc:Bounds x="262" y="472" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="243" y="515" width="78" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1c16d19_di" bpmnElement="PrepareAndSendVerificationSmsId">
+        <dc:Bounds x="350" y="450" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1m5x2cn_di" bpmnElement="ObtainingSmsId">
+        <dc:Bounds x="350" y="200" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1m43f3i_di" bpmnElement="VerificationSmsErrorHandlingId">
+        <dc:Bounds x="332" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="312" y="152" width="78" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0fmajic_di" bpmnElement="Flow_0fmajic">
+        <di:waypoint x="298" y="490" />
+        <di:waypoint x="350" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12wtczf_di" bpmnElement="Flow_12wtczf">
+        <di:waypoint x="400" y="450" />
+        <di:waypoint x="400" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gzh79k_di" bpmnElement="Flow_1gzh79k">
+        <di:waypoint x="332" y="200" />
+        <di:waypoint x="312" y="200" />
+        <di:waypoint x="312" y="420" />
+        <di:waypoint x="353" y="454" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1f1q05x_di" bpmnElement="Association_1f1q05x">
+        <di:waypoint x="438" y="200" />
+        <di:waypoint x="462" y="175" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0bfvkwe_di" bpmnElement="Association_0bfvkwe">
+        <di:waypoint x="375" y="530" />
+        <di:waypoint x="349" y="570" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1g6jx6b_di" bpmnElement="TextAnnotation_1g6jx6b">
+        <dc:Bounds x="450" y="120" width="100" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_10kt0jc_di" bpmnElement="TextAnnotation_10kt0jc">
+        <dc:Bounds x="290" y="570" width="140" height="70" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
