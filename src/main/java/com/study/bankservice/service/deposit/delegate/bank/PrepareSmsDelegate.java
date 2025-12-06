@@ -28,7 +28,7 @@ public class PrepareSmsDelegate implements JavaDelegate {
         int code = RANDOM.nextInt(1_000_000);
         log.info("Generated SMS code: {} for client: {}", format("%06d", code), client.getName());
 
-        delegateExecution.setVariable("sendMobileCode", format("%06d", code));
+        delegateExecution.setVariable("sendMobileCode", code);
         Integer sendMobileCodeCount = (Integer) delegateExecution.getVariable(SEND_MOBILE_CODE_COUNT);
 
         ofNullable(sendMobileCodeCount)
