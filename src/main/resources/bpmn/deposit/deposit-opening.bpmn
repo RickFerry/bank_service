@@ -49,7 +49,7 @@
     </bpmn:textAnnotation>
     <bpmn:association id="Association_1denk7d" associationDirection="None" sourceRef="StartVerificationSMSId" targetRef="TextAnnotation_1e7658t" />
   </bpmn:collaboration>
-  <bpmn:process id="Process_0hlrqjg" isExecutable="true">
+  <bpmn:process id="OpeningDeposit" name="DepositOpening" isExecutable="true">
     <bpmn:laneSet id="LaneSet_1yjuz3m">
       <bpmn:lane id="Lane_0xiyuzp">
         <bpmn:flowNodeRef>PassaportProvidingId</bpmn:flowNodeRef>
