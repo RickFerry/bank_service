@@ -76,6 +76,7 @@
         <bpmn:flowNodeRef>EndVerificationSMSId</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1k66yv9</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1uw04yg</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1khc4ab</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:serviceTask id="PassaportProvidingId" name="Provide a passport" camunda:asyncBefore="true" camunda:delegateExpression="${passportProvidingDelegate}">
@@ -183,7 +184,9 @@
       <bpmn:incoming>Flow_06hjvku</bpmn:incoming>
       <bpmn:outgoing>Flow_1gfu44i</bpmn:outgoing>
     </bpmn:sendTask>
-    <bpmn:sequenceFlow id="Flow_06hjvku" sourceRef="GatewaySuccessvalidationId" targetRef="StartVerificationSMSId" />
+    <bpmn:sequenceFlow id="Flow_06hjvku" sourceRef="GatewaySuccessvalidationId" targetRef="StartVerificationSMSId">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${isValidUser}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:receiveTask id="EndVerificationSMSId" name="End Verification SMS" messageRef="Message_2cu7go1">
       <bpmn:incoming>Flow_1gfu44i</bpmn:incoming>
       <bpmn:outgoing>Flow_13iso92</bpmn:outgoing>
@@ -199,18 +202,35 @@
     <bpmn:endEvent id="Event_1uw04yg">
       <bpmn:incoming>Flow_04u6le1</bpmn:incoming>
     </bpmn:endEvent>
+    <bpmn:subProcess id="Activity_1khc4ab" name="Intermediate throw sub process - from sms validationto man process" triggeredByEvent="true">
+      <bpmn:startEvent id="StartFailedVerificationSmsMessageId" name="Event intermediate sudden operation interruptionerror start" isInterrupting="false">
+        <bpmn:outgoing>Flow_06c7u3q</bpmn:outgoing>
+        <bpmn:messageEventDefinition id="MessageEventDefinition_00l8f8b" messageRef="Message_2cu7go1" />
+      </bpmn:startEvent>
+      <bpmn:scriptTask id="Activity_1x42one" name="Intermediateprint task">
+        <bpmn:incoming>Flow_06c7u3q</bpmn:incoming>
+        <bpmn:outgoing>Flow_1wueqfm</bpmn:outgoing>
+        <bpmn:script>print('The error has throw from sms verification process to main process!');</bpmn:script>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_06c7u3q" sourceRef="StartFailedVerificationSmsMessageId" targetRef="Activity_1x42one" />
+      <bpmn:sequenceFlow id="Flow_1wueqfm" sourceRef="Activity_1x42one" targetRef="EndFailedVerificationSmsErrorId" />
+      <bpmn:endEvent id="EndFailedVerificationSmsErrorId" name="End error from sms verification to main process">
+        <bpmn:incoming>Flow_1wueqfm</bpmn:incoming>
+        <bpmn:errorEventDefinition id="ErrorEventDefinition_1lysbg9" errorRef="Error_0gedzpw" />
+      </bpmn:endEvent>
+    </bpmn:subProcess>
   </bpmn:process>
-  <bpmn:message id="Message_2cu7go1" name="message_successes_sms_verification" />
+  <bpmn:message id="Message_2cu7go1" name="message_failed_sms_verification" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0m6ugqe">
       <bpmndi:BPMNShape id="Participant_16bkepu_di" bpmnElement="Participant_16bkepu" isHorizontal="true">
-        <dc:Bounds x="160" y="83" width="1940" height="977" />
+        <dc:Bounds x="160" y="83" width="2280" height="1027" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1jzhcg0_di" bpmnElement="Lane_1jzhcg0" isHorizontal="true">
-        <dc:Bounds x="190" y="566" width="1910" height="494" />
+        <dc:Bounds x="190" y="566" width="2250" height="544" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0xiyuzp_di" bpmnElement="Lane_0xiyuzp" isHorizontal="true">
-        <dc:Bounds x="190" y="83" width="1910" height="483" />
+        <dc:Bounds x="190" y="83" width="2250" height="483" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1f6invq_di" bpmnElement="PassaportProvidingId">
         <dc:Bounds x="301" y="236" width="100" height="80" />
@@ -306,6 +326,34 @@
       <bpmndi:BPMNShape id="Event_1uw04yg_di" bpmnElement="Event_1uw04yg">
         <dc:Bounds x="2012" y="768" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_11x8rsg_di" bpmnElement="Activity_1khc4ab" isExpanded="true">
+        <dc:Bounds x="2070" y="886" width="350" height="200" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_15t5idy_di" bpmnElement="StartFailedVerificationSmsMessageId">
+        <dc:Bounds x="2100" y="968" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2077" y="1011" width="86" height="66" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1x42one_di" bpmnElement="Activity_1x42one">
+        <dc:Bounds x="2190" y="946" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_141jwqj_di" bpmnElement="EndFailedVerificationSmsErrorId">
+        <dc:Bounds x="2352" y="968" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2332" y="1011" width="79" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_06c7u3q_di" bpmnElement="Flow_06c7u3q">
+        <di:waypoint x="2136" y="986" />
+        <di:waypoint x="2190" y="986" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wueqfm_di" bpmnElement="Flow_1wueqfm">
+        <di:waypoint x="2290" y="986" />
+        <di:waypoint x="2352" y="986" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Event_1geo627_di" bpmnElement="ErrorPassportShouldBePresentHandleId">
         <dc:Bounds x="383" y="218" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -422,10 +470,6 @@
         <di:waypoint x="1920" y="786" />
         <di:waypoint x="2012" y="786" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_0dmn4i2_di" bpmnElement="Association_0dmn4i2">
-        <di:waypoint x="1541" y="916" />
-        <di:waypoint x="1552" y="956" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_1dwr8fx_di" bpmnElement="TextAnnotation_1dwr8fx">
         <dc:Bounds x="200" y="100" width="100" height="99" />
         <bpmndi:BPMNLabel />
@@ -452,6 +496,10 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_13elzmh_di" bpmnElement="TextAnnotation_13elzmh">
         <dc:Bounds x="1210" y="970" width="100" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_15q7ndf_di" bpmnElement="TextAnnotation_15q7ndf">
+        <dc:Bounds x="1530" y="956" width="100" height="84" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_1e7658t_di" bpmnElement="TextAnnotation_1e7658t">
@@ -486,14 +534,14 @@
         <di:waypoint x="1344" y="980" />
         <di:waypoint x="1310" y="1002" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0dmn4i2_di" bpmnElement="Association_0dmn4i2">
+        <di:waypoint x="1541" y="916" />
+        <di:waypoint x="1552" y="956" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Association_1denk7d_di" bpmnElement="Association_1denk7d">
         <di:waypoint x="1536" y="746" />
         <di:waypoint x="1577" y="700" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="TextAnnotation_15q7ndf_di" bpmnElement="TextAnnotation_15q7ndf">
-        <dc:Bounds x="1530" y="956" width="100" height="84" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
