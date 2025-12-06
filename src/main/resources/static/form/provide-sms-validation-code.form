@@ -30,13 +30,15 @@
         "columns": 11
       },
       "id": "Field_19uiwsl",
-      "key": "number_5yj4os",
-      "description": "Obtained mobile code",
+      "key": "obtainedMobileCode",
+      "description": "Enter your code in format xxxxxx",
       "validate": {
         "required": true,
         "min": "0",
         "max": "999999"
-      }
+      },
+      "defaultValue": 0,
+      "decimalDigits": 0
     }
   ],
   "type": "default",
