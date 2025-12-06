@@ -220,7 +220,7 @@
       </bpmn:endEvent>
     </bpmn:subProcess>
   </bpmn:process>
-  <bpmn:message id="Message_2cu7go1" name="message_failed_sms_verification" />
+  <bpmn:message id="Message_2cu7go1" name="message_successes_sms_verification" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0m6ugqe">
       <bpmndi:BPMNShape id="Participant_16bkepu_di" bpmnElement="Participant_16bkepu" isHorizontal="true">
