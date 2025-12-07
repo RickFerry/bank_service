@@ -10,12 +10,14 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.stereotype.Component;
 
+import static com.study.bankservice.util.Constants.MESSAGE_START_SMS_VERIFICATION;
+
 @Slf4j
 @RequiredArgsConstructor
 @Component("startVerificationSMSDelegate")
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class StartVerificationSMSDelegate implements JavaDelegate {
-
+    
     RuntimeService runtimeService;
 
     @Override
@@ -25,7 +27,7 @@ public class StartVerificationSMSDelegate implements JavaDelegate {
         String businessKey = delegateExecution.getBusinessKey();
         Client client = (Client) delegateExecution.getVariable("client");
 
-        runtimeService.createMessageCorrelation("message_start_sms_verification")
+        runtimeService.createMessageCorrelation(MESSAGE_START_SMS_VERIFICATION)
                 .processInstanceBusinessKey(businessKey)
                 .setVariable("client", client)
                 .correlateWithResult();

@@ -12,6 +12,7 @@ public class Constants {
     public static final String LIMIT_OF_VERIFICATION_SMS_ATTEMPTS_EXCEEDED = "LIMIT_OF_VERIFICATION_SMS_ATTEMPTS_EXCEEDED";
     public static final String START_FAILED_MESSAGE = "message_failed_sms_verification";
     public static final String MESSAGE_SUCCESS_SMS_VERIFICATION = "message_successes_sms_verification";
+    public static final String MESSAGE_START_SMS_VERIFICATION = "message_start_sms_verification";
 
     private Constants() {}
 }

@@ -91,7 +91,7 @@
       <bpmn:messageEventDefinition id="MessageEventDefinition_1ozaczq" camunda:delegateExpression="${sendSuccessVerificationSmsDelegate}" />
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1611i4z" name="Yes" sourceRef="Gateway_0dj6c43" targetRef="SendSuccessVerificationSmsId">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${isSmsCodeValid == true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${isSmsCodeValid==true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_04e4980" name="No" sourceRef="Gateway_0dj6c43" targetRef="PrepareAndSendVerificationSmsId" />
     <bpmn:boundaryEvent id="ErrorNoMoreSmsValidationAttempts" name="After Three Attempts Validation is Failed" attachedToRef="ValidationCodeFromSmsId">
