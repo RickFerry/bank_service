@@ -2,9 +2,9 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1nwgw0d" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.41.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.24.0">
   <bpmn:error id="Error_0c5za5t" name="CLIENT_IS_CRIMINAL_ERROR" errorCode="CLIENT_IS_CRIMINAL_ERROR" />
   <bpmn:error id="Error_0gedzpw" name="SUDDEN_OPERATION_INTERRUPTION_ERROR" errorCode="SUDDEN_OPERATION_INTERRUPTION_ERROR" />
-  <bpmn:message id="Message_1jotjh3" name="message_successes_sms_verification" />
+  <bpmn:message id="Message_1jotjh3" name="msg_failed_sms_verification" />
   <bpmn:error id="Error_0otvpaa" name="SUDDEN_OPERATION_INTERRUPTION_ERROR" errorCode="SUDDEN_OPERATION_INTERRUPTION_ERROR" />
-  <bpmn:message id="Message_2cu7go1" name="message_successes_sms_verification" />
+  <bpmn:message id="Message_2cu7go1" name="message_fail_sms_verification" />
   <bpmn:error id="Error_0owi41s" name="SUDDEN_OPERATION_INTERRUPTION_ERROR" errorCode="SUDDEN_OPERATION_INTERRUPTION_ERROR" />
   <bpmn:collaboration id="Collaboration_1owbozr">
     <bpmn:participant id="Participant_0s9bld6" processRef="DepositOpening" />
@@ -156,7 +156,7 @@
       <bpmn:incoming>Flow_06hjvku</bpmn:incoming>
       <bpmn:outgoing>Flow_1gfu44i</bpmn:outgoing>
     </bpmn:sendTask>
-    <bpmn:receiveTask id="EndVerificationSMSId" name="End Verification SMS" messageRef="Message_2cu7go1">
+    <bpmn:receiveTask id="EndVerificationSMSId" name="End Verification SMS" messageRef="Message_1b1t9ne">
       <bpmn:incoming>Flow_1gfu44i</bpmn:incoming>
       <bpmn:outgoing>Flow_13iso92</bpmn:outgoing>
     </bpmn:receiveTask>
@@ -171,7 +171,7 @@
     <bpmn:subProcess id="Activity_1khc4ab" name="Intermediate throw sub process - from sms validationto man process" triggeredByEvent="true">
       <bpmn:startEvent id="StartFailedVerificationSmsMessageId" name="Event intermediate sudden operation interruptionerror start" isInterrupting="false">
         <bpmn:outgoing>Flow_06c7u3q</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_00l8f8b" messageRef="Message_2cu7go1" />
+        <bpmn:messageEventDefinition id="MessageEventDefinition_00l8f8b" messageRef="Message_0u618ct" />
       </bpmn:startEvent>
       <bpmn:scriptTask id="Activity_1x42one" name="Intermediateprint task">
         <bpmn:incoming>Flow_06c7u3q</bpmn:incoming>
@@ -223,16 +223,18 @@
     <bpmn:sequenceFlow id="Flow_13iso92" sourceRef="EndVerificationSMSId" targetRef="Activity_1k66yv9" />
     <bpmn:sequenceFlow id="Flow_04u6le1" sourceRef="Activity_1k66yv9" targetRef="Event_1uw04yg" />
   </bpmn:process>
+  <bpmn:message id="Message_1b1t9ne" name="message_successes_sms_verification" />
+  <bpmn:message id="Message_0u618ct" name="message_failed_sms_verification" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1owbozr">
       <bpmndi:BPMNShape id="Participant_0s9bld6_di" bpmnElement="Participant_0s9bld6" isHorizontal="true">
         <dc:Bounds x="160" y="78" width="2290" height="1030" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_06h2lsw_di" bpmnElement="Lane_06h2lsw" isHorizontal="true">
-        <dc:Bounds x="190" y="78" width="2260" height="515" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1ae1xzt_di" bpmnElement="Lane_1ae1xzt" isHorizontal="true">
         <dc:Bounds x="190" y="593" width="2260" height="515" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_06h2lsw_di" bpmnElement="Lane_06h2lsw" isHorizontal="true">
+        <dc:Bounds x="190" y="78" width="2260" height="515" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1f6invq_di" bpmnElement="PassaportProvidingId">
         <dc:Bounds x="311" y="236" width="100" height="80" />
@@ -472,42 +474,6 @@
         <di:waypoint x="1930" y="786" />
         <di:waypoint x="2022" y="786" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1mkl1zt_di" bpmnElement="Association_1mkl1zt">
-        <di:waypoint x="311" y="270" />
-        <di:waypoint x="222" y="199" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_15rudtu_di" bpmnElement="Association_15rudtu">
-        <di:waypoint x="323" y="836" />
-        <di:waypoint x="284" y="859" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1iaz4f9_di" bpmnElement="Association_1iaz4f9">
-        <di:waypoint x="631" y="265" />
-        <di:waypoint x="630" y="270" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1rkgfbm_di" bpmnElement="Association_1rkgfbm">
-        <di:waypoint x="830" y="826" />
-        <di:waypoint x="795" y="850" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_03ei8qp_di" bpmnElement="Association_03ei8qp">
-        <di:waypoint x="1085" y="648" />
-        <di:waypoint x="1055" y="674" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_18a14mj_di" bpmnElement="Association_18a14mj">
-        <di:waypoint x="1081" y="893" />
-        <di:waypoint x="1050" y="941" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_0dmn4i2_di" bpmnElement="Association_0dmn4i2">
-        <di:waypoint x="1551" y="916" />
-        <di:waypoint x="1562" y="956" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_16r0ulg_di" bpmnElement="Association_16r0ulg">
-        <di:waypoint x="1354" y="980" />
-        <di:waypoint x="1320" y="1002" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1denk7d_di" bpmnElement="Association_1denk7d">
-        <di:waypoint x="1546" y="746" />
-        <di:waypoint x="1587" y="700" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_1dwr8fx_di" bpmnElement="TextAnnotation_1dwr8fx">
         <dc:Bounds x="210" y="100" width="100" height="99" />
         <bpmndi:BPMNLabel />
@@ -544,6 +510,42 @@
         <dc:Bounds x="1560" y="660" width="100" height="40" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1mkl1zt_di" bpmnElement="Association_1mkl1zt">
+        <di:waypoint x="311" y="270" />
+        <di:waypoint x="222" y="199" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_15rudtu_di" bpmnElement="Association_15rudtu">
+        <di:waypoint x="323" y="836" />
+        <di:waypoint x="284" y="859" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1iaz4f9_di" bpmnElement="Association_1iaz4f9">
+        <di:waypoint x="631" y="265" />
+        <di:waypoint x="630" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1rkgfbm_di" bpmnElement="Association_1rkgfbm">
+        <di:waypoint x="830" y="826" />
+        <di:waypoint x="795" y="850" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_03ei8qp_di" bpmnElement="Association_03ei8qp">
+        <di:waypoint x="1085" y="648" />
+        <di:waypoint x="1055" y="674" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_18a14mj_di" bpmnElement="Association_18a14mj">
+        <di:waypoint x="1081" y="893" />
+        <di:waypoint x="1050" y="941" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_16r0ulg_di" bpmnElement="Association_16r0ulg">
+        <di:waypoint x="1354" y="980" />
+        <di:waypoint x="1320" y="1002" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0dmn4i2_di" bpmnElement="Association_0dmn4i2">
+        <di:waypoint x="1551" y="916" />
+        <di:waypoint x="1562" y="956" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1denk7d_di" bpmnElement="Association_1denk7d">
+        <di:waypoint x="1546" y="746" />
+        <di:waypoint x="1587" y="700" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

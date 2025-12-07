@@ -101,7 +101,7 @@
     <bpmn:sequenceFlow id="Flow_00tpngn" sourceRef="ErrorNoMoreSmsValidationAttempts" targetRef="SendFailedVerificationSmsId" />
     <bpmn:endEvent id="SendFailedVerificationSmsId" name="Send Failed Verification Sms" camunda:asyncBefore="true">
       <bpmn:incoming>Flow_00tpngn</bpmn:incoming>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_0vg7ujp" camunda:delegateExpression="${sendFailedVerificationSms}" />
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0vg7ujp" camunda:delegateExpression="${sendFailedVerificationSmsDelegate}" />
     </bpmn:endEvent>
   </bpmn:process>
   <bpmn:message id="Message_1l6im3k" name="message_start_sms_verification" />
@@ -217,6 +217,10 @@
         <di:waypoint x="600" y="410" />
         <di:waypoint x="672" y="410" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_13fl13d_di" bpmnElement="Association_13fl13d">
+        <di:waypoint x="572" y="450" />
+        <di:waypoint x="621" y="360" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_1g6jx6b_di" bpmnElement="TextAnnotation_1g6jx6b">
         <dc:Bounds x="450" y="120" width="100" height="55" />
         <bpmndi:BPMNLabel />
@@ -227,10 +231,6 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_0u5ct44_di" bpmnElement="TextAnnotation_0u5ct44">
         <dc:Bounds x="600" y="120" width="99.99156545209178" height="55.330634278002705" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_1q7p0yr_di" bpmnElement="TextAnnotation_1q7p0yr">
-        <dc:Bounds x="600" y="280" width="250" height="90" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_0dvbwj9_di" bpmnElement="TextAnnotation_0dvbwj9">
@@ -253,10 +253,6 @@
         <di:waypoint x="588" y="200" />
         <di:waypoint x="612" y="175" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_13fl13d_di" bpmnElement="Association_13fl13d">
-        <di:waypoint x="571" y="450" />
-        <di:waypoint x="612" y="370" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Association_0kza67h_di" bpmnElement="Association_0kza67h">
         <di:waypoint x="708" y="407" />
         <di:waypoint x="780" y="394" />
@@ -265,6 +261,10 @@
         <di:waypoint x="793" y="502" />
         <di:waypoint x="824" y="530" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1q7p0yr_di" bpmnElement="TextAnnotation_1q7p0yr">
+        <dc:Bounds x="610" y="270" width="250" height="90" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

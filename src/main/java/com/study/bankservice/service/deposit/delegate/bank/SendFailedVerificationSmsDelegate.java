@@ -13,15 +13,15 @@ import static com.study.bankservice.util.Constants.START_FAILED_MESSAGE;
 
 @Slf4j
 @RequiredArgsConstructor
-@Component("sendFailedVerificationSms")
+@Component("sendFailedVerificationSmsDelegate")
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class SendFailedVerificationSms implements JavaDelegate {
+public class SendFailedVerificationSmsDelegate implements JavaDelegate {
 
     RuntimeService runtimeService;
 
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
-        log.info("The SendFailedVerificationSms has started.");
+        log.info("The sendFailedVerificationSmsDelegate has started.");
 
         String businessKey = delegateExecution.getBusinessKey();
 
