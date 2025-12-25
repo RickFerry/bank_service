@@ -21,6 +21,6 @@ com/study/bankservice/model/Deposit$DepositBuilder.class
 com/study/bankservice/model/Client$ClientBuilder.class
 com/study/bankservice/service/ValidationService.class
 com/study/bankservice/service/deposit/delegate/bank/SendSuccessVerificationSmsDelegate.class
+com/study/bankservice/service/deposit/delegate/bank/SendFailedVerificationSmsDelegate.class
 com/study/bankservice/model/Passport$PassportBuilder.class
-com/study/bankservice/service/deposit/delegate/bank/SendFailedVerificationSms.class
 com/study/bankservice/Application.class

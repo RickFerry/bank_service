@@ -11,7 +11,7 @@
 /home/ricardo/Documents/projects/bank_service/src/main/java/com/study/bankservice/service/deposit/delegate/bank/ClientParticularValidationDelegate.java
 /home/ricardo/Documents/projects/bank_service/src/main/java/com/study/bankservice/service/deposit/delegate/bank/DepositListProvidingDelegate.java
 /home/ricardo/Documents/projects/bank_service/src/main/java/com/study/bankservice/service/deposit/delegate/bank/PrepareSmsDelegate.java
-/home/ricardo/Documents/projects/bank_service/src/main/java/com/study/bankservice/service/deposit/delegate/bank/SendFailedVerificationSms.java
+/home/ricardo/Documents/projects/bank_service/src/main/java/com/study/bankservice/service/deposit/delegate/bank/SendFailedVerificationSmsDelegate.java
 /home/ricardo/Documents/projects/bank_service/src/main/java/com/study/bankservice/service/deposit/delegate/bank/SendSuccessVerificationSmsDelegate.java
 /home/ricardo/Documents/projects/bank_service/src/main/java/com/study/bankservice/service/deposit/delegate/bank/SmsValidationDelegate.java
 /home/ricardo/Documents/projects/bank_service/src/main/java/com/study/bankservice/service/deposit/delegate/bank/StartVerificationSMSDelegate.java
